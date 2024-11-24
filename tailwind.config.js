@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FF8C42', // Orange from logo
-          dark: '#FF7730',
-          light: '#FFA366',
+          DEFAULT: '#FCEA00', // Yellow
+          dark: '#E5D400',
+          light: '#FFF04D',
         },
         secondary: {
           DEFAULT: '#48CAE4', // Light Blue from logo
@@ -20,15 +20,16 @@ export default {
           light: '#90E0EF',
         },
         dark: {
-          DEFAULT: '#1A1A1A', // Darker background
+          DEFAULT: '#161616', // Updated gray background
           lighter: '#222222',
           light: '#2A2A2A',
         },
       },
       fontFamily: {
-        sans: ['Source Code Pro', 'monospace'],
-        display: ['Montserrat', 'system-ui', 'sans-serif'],
-        mono: ['Source Code Pro', 'monospace'],
+        teknaf: ['Teknaf', 'sans-serif'],
+        sans: ['Teknaf', 'sans-serif'],
+        display: ['Teknaf', 'sans-serif'],
+        mono: ['Teknaf', 'monospace'],
       },
       fontWeight: {
         normal: '400',
