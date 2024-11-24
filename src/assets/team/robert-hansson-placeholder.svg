@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tech-inspired background -->
+  <rect width="400" height="500" fill="#1a1a1a"/>
+  
+  <!-- Circuit pattern -->
+  <pattern id="circuit" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M0 20h40M20 0v40" stroke="#FCEA00" stroke-opacity="0.1" stroke-width="1"/>
+  </pattern>
+  <rect width="400" height="500" fill="url(#circuit)"/>
+  
+  <!-- Placeholder silhouette -->
+  <path d="M200 150 C 180 150, 150 180, 150 220 C 150 280, 200 300, 200 300 C 200 300, 250 280, 250 220 C 250 180, 220 150, 200 150Z" fill="#FCEA00" fill-opacity="0.1"/>
+  <circle cx="200" cy="180" r="30" fill="#FCEA00" fill-opacity="0.1"/>
+  
+  <!-- Text -->
+  <text x="200" y="400" font-family="monospace" font-size="24" fill="#FCEA00" text-anchor="middle">Image Placeholder</text>
+  <text x="200" y="430" font-family="monospace" font-size="18" fill="#FCEA00" text-anchor="middle">Robert Hansson</text>
+</svg>
