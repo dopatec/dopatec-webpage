@@ -8,7 +8,110 @@ export function Projects() {
     <section className="relative py-20">
       {/* Background effects */}
       <div className="overflow-hidden absolute inset-0">
-        <div className="absolute inset-0 bg-black" />
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.95)_100%)]" />
+        
+        {/* Digital circuit patterns */}
+        <div className="absolute inset-0 opacity-10 circuit-pattern" />
+        
+        {/* Neural connections */}
+        <div className="absolute inset-0 neural-connections">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className={`neuron-path neuron-path-${i + 1}`}>
+              <div className="signal-pulse" />
+            </div>
+          ))}
+        </div>
+
+        {/* Dopamine particles */}
+        <div className="absolute inset-0 dopamine-particles">
+          {[...Array(30)].map((_, i) => {
+            const delay = Math.random() * 5;
+            const duration = 3 + Math.random() * 2;
+            const size = 2 + Math.random() * 4;
+            const initialX = Math.random() * 100;
+            const initialY = Math.random() * 100;
+            const opacity = 0.1 + Math.random() * 0.3;
+            const scale = 0.8 + Math.random() * 0.4;
+            const rotation = Math.random() * 360;
+            
+            return (
+              <div
+                key={i}
+                className="absolute rounded-full bg-primary/20 blur-[1px] transition-all duration-1000"
+                style={{
+                  left: `${initialX}%`,
+                  top: `${initialY}%`,
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  opacity: opacity,
+                  transform: `scale(${scale}) rotate(${rotation}deg)`,
+                  animation: `
+                    float ${duration}s ease-in-out ${delay}s infinite,
+                    pulse ${2 + Math.random() * 2}s ease-in-out ${delay}s infinite,
+                    glow ${3 + Math.random() * 2}s ease-in-out ${delay}s infinite,
+                    spin ${8 + Math.random() * 4}s linear infinite
+                  `
+                }}
+              >
+                {/* Inner glow effect */}
+                <div 
+                  className="absolute inset-0 rounded-full bg-primary/30"
+                  style={{
+                    filter: 'blur(2px)',
+                    animation: `pulse ${2 + Math.random() * 2}s ease-in-out ${delay}s infinite alternate`
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Energy waves */}
+        <div className="absolute inset-0">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-full h-full border border-primary/10 rounded-full"
+              style={{
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                animation: `ripple ${6 + i * 2}s linear infinite`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Glowing orbs */}
+        <div className="absolute inset-0">
+          {[...Array(5)].map((_, i) => {
+            const size = 40 + Math.random() * 60;
+            const initialX = Math.random() * 100;
+            const initialY = Math.random() * 100;
+            const delay = Math.random() * 3;
+            
+            return (
+              <div
+                key={i}
+                className="absolute rounded-full bg-gradient-to-r from-primary/5 to-transparent"
+                style={{
+                  left: `${initialX}%`,
+                  top: `${initialY}%`,
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  filter: 'blur(20px)',
+                  animation: `
+                    float ${10 + Math.random() * 5}s ease-in-out ${delay}s infinite,
+                    pulse ${5 + Math.random() * 3}s ease-in-out ${delay}s infinite alternate
+                  `
+                }}
+              />
+            );
+          })}
+        </div>
+
+        {/* Floating particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => {
             const delay = Math.random() * 5;

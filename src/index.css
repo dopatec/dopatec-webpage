@@ -1908,6 +1908,116 @@
       transform: scale(1.05) rotate(2deg);
     }
   }
+
+  /* Enhanced molecule animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(10px, -10px) rotate(5deg);
+    }
+    50% {
+      transform: translate(-5px, 10px) rotate(-5deg);
+    }
+    75% {
+      transform: translate(-10px, -5px) rotate(3deg);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      filter: blur(1px) brightness(1);
+    }
+    50% {
+      filter: blur(2px) brightness(1.5);
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+    }
+  }
+
+  /* Molecule effects */
+  .dopamine-particles {
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .dopamine-particles > div {
+    will-change: transform;
+  }
+
+  .neural-connections {
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .neuron-path {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(252, 234, 0, 0.2), transparent);
+  }
+
+  .neuron-path-1 { transform: rotate(0deg); top: 20%; }
+  .neuron-path-2 { transform: rotate(45deg); top: 40%; }
+  .neuron-path-3 { transform: rotate(90deg); top: 60%; }
+  .neuron-path-4 { transform: rotate(135deg); top: 80%; }
+  .neuron-path-5 { transform: rotate(180deg); top: 90%; }
+
+  .signal-pulse {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(252, 234, 0, 0.6);
+    animation: signalMove 3s linear infinite;
+  }
+
+  @keyframes signalMove {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      left: 100%;
+      opacity: 0;
+    }
+  }
 }
 
 @layer utilities {
