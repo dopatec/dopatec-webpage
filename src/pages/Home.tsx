@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
+import { Dopamine } from '../components/Dopamine';
 
 const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd90WsNsKHNbxBCNe3speUkqxPhGenN4_DnE5Ik5hfy2TmAHg/viewform';
 
@@ -35,7 +36,7 @@ export function Home() {
           <div className="text-left">
             <button
               onClick={handleInterestClick}
-              className="font-mono font-bold text-black btn bg-primary hover:bg-primary-light"
+              className="font-mono text-black btn bg-primary hover:bg-primary-light"
             >
               Get to know us
             </button>
@@ -43,15 +44,8 @@ export function Home() {
         </div>
       </section>
 
-      {/* Vision Section */}
-      <section className="py-20 bg-dark">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <h1 className="mb-6 heading-xl">Dopamine.</h1>
-          <p className="mb-12 max-w-4xl font-mono text-xl text-gray-200">
-          A brief story about Dopamine.
-          </p>
-        </div>
-      </section>
+      {/* Dopamine Section */}
+      <Dopamine />
 
       {/* Projects Preview Section */}
       <section className="py-20 bg-dark-lighter">
@@ -86,7 +80,7 @@ export function Home() {
           <div className="text-left">
             <button
               onClick={handleInterestClick}
-              className="font-mono font-bold text-black btn bg-primary hover:bg-primary-light"
+              className="font-mono text-black btn bg-primary hover:bg-primary-light"
             >
               Engagera dig
             </button>

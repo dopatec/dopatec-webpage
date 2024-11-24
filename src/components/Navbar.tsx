@@ -22,10 +22,10 @@ export function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden items-center space-x-8 md:flex">
-            <Link to="/" className="nav-link">Hem</Link>
-            <Link to="/projects" className="nav-link">Projekt</Link>
-            <Link to="/about" className="nav-link">Om Oss</Link>
-            <Link to="/mission" className="nav-link">Mission</Link>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/projects" className="nav-link">Projects</Link>
+            <Link to="/about" className="nav-link">About</Link>
+            <Link to="/contact" className="nav-link">Contact</Link>
             
             {/* Social Media Links */}
             <div className="flex items-center space-x-4">
@@ -65,10 +65,10 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-dark">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to="/" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Hem</Link>
-            <Link to="/projects" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Projekt</Link>
-            <Link to="/about" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Om Oss</Link>
-            <Link to="/mission" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Mission</Link>
+            <Link to="/" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Home</Link>
+            <Link to="/projects" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Projects</Link>
+            <Link to="/about" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>About</Link>
+            <Link to="/contact" className="block px-3 py-2 nav-link" onClick={() => setIsOpen(false)}>Contact</Link>
           </div>
         </div>
       )}
