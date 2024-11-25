@@ -93,18 +93,18 @@ export function About() {
         {/* Content */}
         <div className="relative z-10 px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h1 className="mb-8 heading-xl glitch-text parallax" data-speed="0.1" data-text="Om Impact Neuro Foundation">
+            <h1 className="mb-8 heading-xl parallax text-center" data-speed="0.1" data-text="Om Impact Neuro Foundation">
               <span className="text-primary">About</span>{" "}
               <span className="text-white">DopaTec</span>
             </h1>
-            <p className="mx-auto mb-12 max-w-4xl font-mono text-xl text-gray-200 parallax" data-speed="0.15">
+            <p className="mx-auto mb-12 max-w-4xl font-mono text-xl text-gray-200 parallax text-center" data-speed="0.15">
             Dopatec is headquartered in Malmö, Sweden, 
             and is dedicated to transforming the future of learning by merging neuroscience with technology.
             </p>
           </div>
 
           <div className="py-16 text-center">
-            <h2 className="mb-12 text-center heading-xl glitch-text parallax" data-speed="0.1" data-text="Vårt Team">
+            <h2 className="mb-12 text-center heading-xl parallax" data-speed="0.1" data-text="Vårt Team">
               <span className="text-primary">Our</span>{" "}
               <span className="text-white">Team</span>
             </h2>

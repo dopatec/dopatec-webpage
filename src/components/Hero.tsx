@@ -74,7 +74,7 @@ export function Hero() {
             <span className="text-white">Tec</span>
             <span className="text-primary">.</span>
           </h1>
-          <h1 className="heading-xl parallax glitch-text" data-speed="0.15" data-text="Dopamine Technologies">
+          <h1 className="heading-xl parallax" data-speed="0.15" data-text="Dopamine Technologies">
             <span className="text-primary">Dopamine</span>
             {" "}
             <span className="text-white">Technologies</span>

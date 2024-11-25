@@ -61,7 +61,7 @@ export function Contact() {
       </div>
 
       <div className="relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-left heading-xl glitch-text" data-text="Contact Us.">
+        <h2 className="mb-8 text-left heading-xl" data-text="Contact Us.">
           <span className="text-primary">Contact</span>
           {" "}
           <span className="text-white">Us</span>

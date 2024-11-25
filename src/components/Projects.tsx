@@ -72,7 +72,7 @@ export function Projects() {
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-full h-full border border-primary/10 rounded-full"
+              className="absolute w-full h-full rounded-full border border-primary/10"
               style={{
                 left: '50%',
                 top: '50%',
@@ -94,7 +94,7 @@ export function Projects() {
             return (
               <div
                 key={i}
-                className="absolute rounded-full bg-gradient-to-r from-primary/5 to-transparent"
+                className="absolute bg-gradient-to-r to-transparent rounded-full from-primary/5"
                 style={{
                   left: `${initialX}%`,
                   top: `${initialY}%`,
@@ -141,7 +141,7 @@ export function Projects() {
 
       {/* Header */}
       <div className="container relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        <h2 className="mb-4 text-left heading-xl glitch-text" data-text="Projects.">
+        <h2 className="mb-4 text-left heading-xl" data-text="Projects.">
           <span className="text-primary">Projects</span>
           {" "}
           <span className="text-white"></span>
