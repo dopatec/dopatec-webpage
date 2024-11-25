@@ -7,10 +7,12 @@ import { Project } from './pages/Project';
 import { About } from './pages/About';
 import { Mission } from './pages/Mission';
 import ContactPage from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-dark">
         <Navbar />
         <Routes>
