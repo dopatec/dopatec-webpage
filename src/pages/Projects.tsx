@@ -179,28 +179,38 @@ export function Projects() {
         </div>
 
         {/* App Mockups Section */}
-        <div className="mt-16">
-          <h2 className="mb-8 text-3xl font-bold text-center">App Interface</h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <h2 className="mb-16 text-3xl font-bold text-center">
+            <span className="text-primary">App</span>
+            {" "}
+            <span className="text-white">Interface</span>
+          </h2>
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div className="relative group">
-              <img
-                src={dentaforceMockup}
-                alt="Dentaforce App Interface"
-                className="rounded-lg shadow-lg transition-opacity duration-300 group-hover:opacity-90"
-              />
-              <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="px-4 py-2 text-white bg-black bg-opacity-75 rounded-md">Mobile Interface</span>
+              <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm bg-black/30">
+                <img
+                  src={dentaforceMockup}
+                  alt="Dentaforce App Interface"
+                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
+                  <span className="px-6 py-3 text-lg font-mono text-white border rounded-md border-primary">Mobile Interface</span>
+                </div>
               </div>
+              <div className="absolute inset-0 blur-3xl bg-primary/10 -z-10" />
             </div>
             <div className="relative group">
-              <img
-                src={dentaforceDashboard}
-                alt="Dentaforce Dashboard"
-                className="rounded-lg shadow-lg transition-opacity duration-300 group-hover:opacity-90"
-              />
-              <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <span className="px-4 py-2 text-white bg-black bg-opacity-75 rounded-md">Dashboard View</span>
+              <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm bg-black/30">
+                <img
+                  src={dentaforceDashboard}
+                  alt="Dentaforce Dashboard"
+                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
+                  <span className="px-6 py-3 text-lg font-mono text-white border rounded-md border-primary">Dashboard View</span>
+                </div>
               </div>
+              <div className="absolute inset-0 blur-3xl bg-primary/10 -z-10" />
             </div>
           </div>
         </div>
