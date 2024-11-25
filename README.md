@@ -1,3 +1,5 @@
-# dopatec-webpage
+# Dopatec Homepage
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/amyna-se/dopatec-webpage)
+CMS not implemented
+
+Next js Typescript
