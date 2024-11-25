@@ -6,6 +6,7 @@ import { Projects } from './pages/Projects';
 import { Project } from './pages/Project';
 import { About } from './pages/About';
 import { Mission } from './pages/Mission';
+import ContactPage from './pages/Contact';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/projects/:projectId" element={<Project />} />
           <Route path="/about" element={<About />} />
           <Route path="/mission" element={<Mission />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>

@@ -1,11 +1,14 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd90WsNsKHNbxBCNe3speUkqxPhGenN4_DnE5Ik5hfy2TmAHg/viewform';
 
 export function Contact() {
+  const navigate = useNavigate();
+
   const handleInterestClick = () => {
-    window.open(INTEREST_FORM_URL, '_blank');
+    navigate('/contact');
   };
 
   return (
