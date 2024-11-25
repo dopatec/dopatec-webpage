@@ -83,7 +83,7 @@ export function Solution() {
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-full h-full border border-primary/10 rounded-full"
+              className="absolute w-full h-full rounded-full border border-primary/10"
               style={{
                 left: '50%',
                 top: '50%',
@@ -99,7 +99,7 @@ export function Solution() {
 
       {/* Header */}
       <div className="container relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        <h2 className="mb-4 text-left heading-xl glitch-text" data-text="Our Solutions.">
+        <h2 className="mb-4 text-left heading-xl" data-text="Our Solutions.">
           <span className="text-primary">Our</span>
           {" "}
           <span className="text-white">Solutions</span>
@@ -127,19 +127,19 @@ export function Solution() {
                 }}
               >
                 {/* Icon container */}
-                <div className="absolute left-0 p-2 -translate-y-1/2 top-8 bg-black">
-                  <div className="relative p-4 transition-all duration-500 border border-primary/50 group-hover:border-primary">
+                <div className="absolute left-0 top-8 p-2 bg-black -translate-y-1/2">
+                  <div className="relative p-4 border transition-all duration-500 border-primary/50 group-hover:border-primary">
                     {/* Glowing corners */}
                     <div className="absolute top-0 left-0 w-2 h-2 transition-all duration-500 -translate-x-1 -translate-y-1 bg-primary/50 group-hover:bg-primary" />
                     <div className="absolute top-0 right-0 w-2 h-2 transition-all duration-500 translate-x-1 -translate-y-1 bg-primary/50 group-hover:bg-primary" />
                     <div className="absolute bottom-0 left-0 w-2 h-2 transition-all duration-500 -translate-x-1 translate-y-1 bg-primary/50 group-hover:bg-primary" />
-                    <div className="absolute bottom-0 right-0 w-2 h-2 transition-all duration-500 translate-x-1 translate-y-1 bg-primary/50 group-hover:bg-primary" />
+                    <div className="absolute right-0 bottom-0 w-2 h-2 transition-all duration-500 translate-x-1 translate-y-1 bg-primary/50 group-hover:bg-primary" />
                     {step.icon}
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative p-8 transition-all duration-500 border border-primary/10 backdrop-blur-sm group-hover:border-primary/30">
+                <div className="relative p-8 border backdrop-blur-sm transition-all duration-500 border-primary/10 group-hover:border-primary/30">
                   {/* Glowing line */}
                   <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                   

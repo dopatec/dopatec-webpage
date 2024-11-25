@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useFadeIn } from '../hooks/useFadeIn';
 
 const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd90WsNsKHNbxBCNe3speUkqxPhGenN4_DnE5Ik5hfy2TmAHg/viewform';
 
@@ -68,32 +69,42 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4">
-          <h1 className="heading-xl parallax glitch-text" data-speed="0.1" data-text="DopaTec.">
-            <span className="text-primary">Dopa</span>
-            <span className="text-white">Tec</span>
-            <span className="text-primary">.</span>
-          </h1>
-          <h1 className="heading-xl parallax glitch-text" data-speed="0.15" data-text="Dopamine Technologies">
-            <span className="text-primary">Dopamine</span>
-            {" "}
-            <span className="text-white">Technologies</span>
-          </h1>
-        </div>
-        <h2 className="mb-8 max-w-3xl text-2xl text-white md:text-3xl parallax" data-speed="0.2">
-          We are a pioneering tech company transforming digital engagement into 
-          empowered learning through neuroscience-driven solutions.
-        </h2>
-        <p className="mb-12 max-w-3xl font-mono text-xl text-gray-200">
-        </p>
-        <div className="text-left">
-          <button
-            onClick={handleInterestClick}
-            className="font-mono text-black btn bg-primary hover:bg-primary-light"
-          >
-            Get to know us <ArrowRight className="ml-2" />
-          </button>
-        </div>
+        {(() => {
+          const [ref, isVisible] = useFadeIn();
+          return (
+            <div 
+              ref={ref}
+              className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+            >
+              <div className="flex flex-col gap-4">
+                <h1 className="heading-xl parallax glitch-text" data-speed="0.1" data-text="DopaTec.">
+                  <span className="text-primary">Dopa</span>
+                  <span className="text-white">Tec</span>
+                  <span className="text-primary">.</span>
+                </h1>
+                <h1 className="heading-xl parallax" data-speed="0.15" data-text="Dopamine Technologies">
+                  <span className="text-primary">Dopamine</span>
+                  {" "}
+                  <span className="text-white">Technologies</span>
+                </h1>
+              </div>
+              <h2 className="mb-8 max-w-3xl text-2xl text-white md:text-3xl parallax" data-speed="0.2">
+                We are a pioneering tech company transforming digital engagement into 
+                empowered learning through neuroscience-driven solutions.
+              </h2>
+              <p className="mb-12 max-w-3xl font-mono text-xl text-gray-200">
+              </p>
+              <div className="text-left">
+                <button
+                  onClick={handleInterestClick}
+                  className="font-mono text-black btn bg-primary hover:bg-primary-light"
+                >
+                  Get to know us <ArrowRight className="ml-2" />
+                </button>
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Scroll Indicator */}
         <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 scroll-indicator-container">

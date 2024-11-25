@@ -72,7 +72,7 @@ export function Projects() {
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-full h-full border border-primary/10 rounded-full"
+              className="absolute w-full h-full rounded-full border border-primary/10"
               style={{
                 left: '50%',
                 top: '50%',
@@ -94,7 +94,7 @@ export function Projects() {
             return (
               <div
                 key={i}
-                className="absolute rounded-full bg-gradient-to-r from-primary/5 to-transparent"
+                className="absolute bg-gradient-to-r to-transparent rounded-full from-primary/5"
                 style={{
                   left: `${initialX}%`,
                   top: `${initialY}%`,
@@ -141,7 +141,7 @@ export function Projects() {
 
       {/* Header */}
       <div className="container relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        <h2 className="mb-4 text-left heading-xl glitch-text" data-text="Projects.">
+        <h2 className="mb-4 text-left heading-xl" data-text="Projects.">
           <span className="text-primary">Projects</span>
           {" "}
           <span className="text-white"></span>
@@ -175,14 +175,10 @@ export function Projects() {
             <h3 className="mb-4 heading-sm">{project.name}</h3>
             <p className="mb-6 font-mono text-body">{project.description}</p>
             <Link
-              to={`/projects/${project.id}`}
-              className="inline-flex overflow-hidden relative gap-2 items-center px-4 py-2 transition-all duration-500 learn-more-btn group/btn text-primary"
+              to={`/projects`}
+              className="inline-flex items-center gap-2 text-primary hover:gap-4 transition-all duration-300 group-hover:text-white"
             >
-              <span className="relative z-10 transition-transform duration-500 group-hover/btn:translate-x-1">
-                Learn more
-              </span>
-              <ArrowRight className="relative z-10 w-5 h-5 transition-all duration-500 group-hover/btn:translate-x-1" />
-              <div className="absolute inset-0 transition-transform duration-500 transform origin-left scale-x-0 bg-primary/10 group-hover/btn:scale-x-100" />
+              Learn more <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         ))}

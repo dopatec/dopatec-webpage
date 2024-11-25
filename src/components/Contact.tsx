@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useFadeIn } from '../hooks/useFadeIn';
 
 const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd90WsNsKHNbxBCNe3speUkqxPhGenN4_DnE5Ik5hfy2TmAHg/viewform';
 
@@ -61,27 +62,89 @@ export function Contact() {
       </div>
 
       <div className="relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        <h2 className="mb-8 text-left heading-xl glitch-text" data-text="Contact Us.">
-          <span className="text-primary">Contact</span>
-          {" "}
-          <span className="text-white">Us</span>
-          <span className="text-primary">.</span>
-        </h2>
-        <p className="mb-12 font-mono text-2xl leading-relaxed text-left text-gray-200">
-          We would love to answer any of your questions.
-        </p>
-        <div className="flex justify-start">
-          <button
-            onClick={handleInterestClick}
-            className="inline-flex overflow-hidden relative gap-2 items-center px-8 py-3 font-mono text-black btn bg-primary hover:bg-primary-light group"
-          >
-            <span className="relative z-10 transition-transform duration-500 group-hover:translate-x-1">
-              Reach out
-            </span>
-            <ArrowRight className="relative z-10 w-5 h-5 transition-all duration-500 group-hover:translate-x-1" />
-            <div className="absolute inset-0 transition-transform duration-500 transform origin-left scale-x-0 bg-white/10 group-hover:scale-x-100" />
-          </button>
-        </div>
+        {(() => {
+          const [headerRef, headerVisible] = useFadeIn();
+          return (
+            <div
+              ref={headerRef}
+              className={`fade-in-section ${headerVisible ? 'is-visible' : ''}`}
+            >
+              <h2 className="mb-8 text-left heading-xl" data-text="Contact Us.">
+                <span className="text-primary">Contact</span>
+                {" "}
+                <span className="text-white">Us</span>
+                <span className="text-primary">.</span>
+              </h2>
+            </div>
+          );
+        })()}
+
+        {/* Contact Form */}
+        {(() => {
+          const [formRef, formVisible] = useFadeIn();
+          return (
+            <div
+              ref={formRef}
+              className={`fade-in-section delay-1 ${formVisible ? 'is-visible' : ''}`}
+            >
+              <form className="space-y-6">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div>
+                    <label htmlFor="first-name" className="block mb-2 font-mono text-sm text-gray-300">
+                      First Name
+                    </label>
+                    <input
+                      type="text"
+                      id="first-name"
+                      className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="last-name" className="block mb-2 font-mono text-sm text-gray-300">
+                      Last Name
+                    </label>
+                    <input
+                      type="text"
+                      id="last-name"
+                      className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="email" className="block mb-2 font-mono text-sm text-gray-300">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block mb-2 font-mono text-sm text-gray-300">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={6}
+                    className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-black btn bg-primary hover:bg-primary-light group"
+                >
+                  <span>Send Message</span>
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </form>
+            </div>
+          );
+        })()}
       </div>
     </section>
   );

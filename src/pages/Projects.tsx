@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFadeIn } from '../hooks/useFadeIn';
 import { Brain, GraduationCap, Gauge, Users, Share2, Heart, BarChart, Sparkles, ArrowRight, 
          Code, Cpu, Database, Shield, Phone, Laptop, Monitor } from 'lucide-react';
 import dentaforceLogo from '../assets/dentaforce-logo.png';
@@ -9,6 +10,15 @@ import dentaforceDashboard from '../assets/dentaforce-dashboard.png';
 export function Projects() {
   const navigate = useNavigate();
 
+  // Initialize fade-in refs for different sections
+  const [headerRef, headerVisible] = useFadeIn();
+  const [heroRef, heroVisible] = useFadeIn();
+  const [featuresRef, featuresVisible] = useFadeIn();
+  const [mockupsRef, mockupsVisible] = useFadeIn();
+  const [techRef, techVisible] = useFadeIn();
+  const [platformsRef, platformsVisible] = useFadeIn();
+
+    // all the comprehensive features items of the project
   const features = [
     {
       icon: <Brain className="w-8 h-8" />,
@@ -52,6 +62,7 @@ export function Projects() {
     }
   ];
 
+   // all the tech specs items of the project
   const techSpecs = [
     {
       icon: <Code className="w-6 h-6" />,
@@ -74,7 +85,7 @@ export function Projects() {
       description: "HIPAA compliant with end-to-end encryption"
     }
   ];
-
+  // all the platforms items of the project
   const platforms = [
     {
       icon: <Phone className="w-12 h-12" />,
@@ -103,7 +114,12 @@ export function Projects() {
       {/* Content */}
       <div className="relative">
         {/* Projects Header */}
-        <div className="px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={headerRef}
+          className={`px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="text-left">
             <h1 className="mb-8 heading-xl">
               <span className="text-primary">Our </span>
@@ -116,7 +132,12 @@ export function Projects() {
         </div>
 
         {/* Dentaforce Hero Section */}
-        <div className="px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={heroRef}
+          className={`px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="flex flex-col items-center md:flex-row md:justify-between">
             <div className="mb-8 md:mb-0 md:mr-12">
               <img src={dentaforceLogo} alt="Dentaforce Logo" className="mb-8 w-64" />
@@ -137,7 +158,7 @@ export function Projects() {
                 </button>
                 <button 
                   onClick={() => navigate('/projects')}
-                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-white btn border border-primary hover:bg-primary/10"
+                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-white border btn border-primary hover:bg-primary/10"
                 >
                   View All Projects
                 </button>
@@ -151,7 +172,12 @@ export function Projects() {
         </div>
 
         {/* Features Grid */}
-        <div className="px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={featuresRef}
+          className={`px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="mb-16 text-3xl font-bold text-center">
             <span className="text-primary">Comprehensive</span>
             {" "}
@@ -177,28 +203,43 @@ export function Projects() {
         </div>
 
         {/* App Mockups Section */}
-        <div className="mt-16">
-          <h2 className="text-3xl font-bold text-center mb-8">App Interface</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div 
+          ref={mockupsRef}
+          className={`px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            mockupsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="mb-16 text-3xl font-bold text-center">
+            <span className="text-primary">App</span>
+            {" "}
+            <span className="text-white">Interface</span>
+          </h2>
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div className="relative group">
-              <img
-                src={dentaforceMockup}
-                alt="Dentaforce App Interface"
-                className="rounded-lg shadow-lg transition-opacity duration-300 group-hover:opacity-90"
-              />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="bg-black bg-opacity-75 text-white px-4 py-2 rounded-md">Mobile Interface</span>
+              <div className="overflow-hidden relative rounded-2xl backdrop-blur-sm bg-black/30">
+                <img
+                  src={dentaforceMockup}
+                  alt="Dentaforce App Interface"
+                  className="object-cover w-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
+                  <span className="px-6 py-3 font-mono text-lg text-white rounded-md border border-primary">Mobile Interface</span>
+                </div>
               </div>
+              <div className="absolute inset-0 blur-3xl bg-primary/10 -z-10" />
             </div>
             <div className="relative group">
-              <img
-                src={dentaforceDashboard}
-                alt="Dentaforce Dashboard"
-                className="rounded-lg shadow-lg transition-opacity duration-300 group-hover:opacity-90"
-              />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="bg-black bg-opacity-75 text-white px-4 py-2 rounded-md">Dashboard View</span>
+              <div className="overflow-hidden relative rounded-2xl backdrop-blur-sm bg-black/30">
+                <img
+                  src={dentaforceDashboard}
+                  alt="Dentaforce Dashboard"
+                  className="object-cover w-full transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
+                  <span className="px-6 py-3 font-mono text-lg text-white rounded-md border border-primary">Dashboard View</span>
+                </div>
               </div>
+              <div className="absolute inset-0 blur-3xl bg-primary/10 -z-10" />
             </div>
           </div>
         </div>
@@ -224,7 +265,12 @@ export function Projects() {
         </div>
 
         {/* Tech Specs */}
-        <div className="px-4 py-24 bg-black/30">
+        <div 
+          ref={techRef}
+          className={`px-4 py-24 bg-black/30 transition-all duration-1000 ${
+            techVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <h2 className="mb-16 text-3xl font-bold text-center">
               <span className="text-primary">Technical</span>
@@ -234,7 +280,7 @@ export function Projects() {
             <div className="grid gap-8 md:grid-cols-4">
               {techSpecs.map((spec, index) => (
                 <div key={index} className="p-6 text-center rounded-xl bg-black/30">
-                  <div className="mx-auto mb-4 p-3 w-12 h-12 rounded-xl text-primary bg-primary/10">
+                  <div className="p-3 mx-auto mb-4 w-12 h-12 rounded-xl text-primary bg-primary/10">
                     {spec.icon}
                   </div>
                   <h3 className="mb-2 text-lg font-bold text-primary">{spec.title}</h3>
@@ -246,12 +292,17 @@ export function Projects() {
         </div>
 
         {/* Platform Stats */}
-        <div className="px-4 py-24 bg-gradient-to-b from-black/30 to-transparent">
+        <div 
+          ref={platformsRef}
+          className={`px-4 py-24 bg-gradient-to-b to-transparent from-black/30 transition-all duration-1000 ${
+            platformsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-3">
               {platforms.map((platform, index) => (
                 <div key={index} className="p-8 text-center rounded-xl bg-black/30">
-                  <div className="mx-auto mb-4 p-4 w-20 h-20 rounded-full text-primary bg-primary/10">
+                  <div className="p-4 mx-auto mb-4 w-20 h-20 rounded-full text-primary bg-primary/10">
                     {platform.icon}
                   </div>
                   <h3 className="mb-2 text-xl font-bold text-white">{platform.name}</h3>
@@ -291,7 +342,7 @@ export function Projects() {
               {" "}
               <span className="text-white">Transform Your Practice?</span>
             </h2>
-            <p className="mx-auto mb-12 text-center font-mono text-xl text-gray-300">
+            <p className="mx-auto mb-12 font-mono text-xl text-center text-gray-300">
               Join the future of dental education and practice management.
             </p>
             <button 
