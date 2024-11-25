@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFadeIn } from '../hooks/useFadeIn';
 import { Brain, GraduationCap, Gauge, Users, Share2, Heart, BarChart, Sparkles, ArrowRight, 
          Code, Cpu, Database, Shield, Phone, Laptop, Monitor } from 'lucide-react';
 import dentaforceLogo from '../assets/dentaforce-logo.png';
@@ -8,6 +9,14 @@ import dentaforceDashboard from '../assets/dentaforce-dashboard.png';
 
 export function Projects() {
   const navigate = useNavigate();
+
+  // Initialize fade-in refs for different sections
+  const [headerRef, headerVisible] = useFadeIn();
+  const [heroRef, heroVisible] = useFadeIn();
+  const [featuresRef, featuresVisible] = useFadeIn();
+  const [mockupsRef, mockupsVisible] = useFadeIn();
+  const [techRef, techVisible] = useFadeIn();
+  const [platformsRef, platformsVisible] = useFadeIn();
 
     // all the comprehensive features items of the project
   const features = [
@@ -105,7 +114,12 @@ export function Projects() {
       {/* Content */}
       <div className="relative">
         {/* Projects Header */}
-        <div className="px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={headerRef}
+          className={`px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="text-left">
             <h1 className="mb-8 heading-xl">
               <span className="text-primary">Our </span>
@@ -118,7 +132,12 @@ export function Projects() {
         </div>
 
         {/* Dentaforce Hero Section */}
-        <div className="px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={heroRef}
+          className={`px-4 pt-32 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="flex flex-col items-center md:flex-row md:justify-between">
             <div className="mb-8 md:mb-0 md:mr-12">
               <img src={dentaforceLogo} alt="Dentaforce Logo" className="mb-8 w-64" />
@@ -153,7 +172,12 @@ export function Projects() {
         </div>
 
         {/* Features Grid */}
-        <div className="px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={featuresRef}
+          className={`px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            featuresVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="mb-16 text-3xl font-bold text-center">
             <span className="text-primary">Comprehensive</span>
             {" "}
@@ -179,7 +203,12 @@ export function Projects() {
         </div>
 
         {/* App Mockups Section */}
-        <div className="px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div 
+          ref={mockupsRef}
+          className={`px-4 py-24 mx-auto max-w-7xl sm:px-6 lg:px-8 transition-all duration-1000 ${
+            mockupsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="mb-16 text-3xl font-bold text-center">
             <span className="text-primary">App</span>
             {" "}
@@ -187,27 +216,27 @@ export function Projects() {
           </h2>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm bg-black/30">
+              <div className="overflow-hidden relative rounded-2xl backdrop-blur-sm bg-black/30">
                 <img
                   src={dentaforceMockup}
                   alt="Dentaforce App Interface"
-                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover w-full transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
-                  <span className="px-6 py-3 text-lg font-mono text-white border rounded-md border-primary">Mobile Interface</span>
+                <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
+                  <span className="px-6 py-3 font-mono text-lg text-white rounded-md border border-primary">Mobile Interface</span>
                 </div>
               </div>
               <div className="absolute inset-0 blur-3xl bg-primary/10 -z-10" />
             </div>
             <div className="relative group">
-              <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm bg-black/30">
+              <div className="overflow-hidden relative rounded-2xl backdrop-blur-sm bg-black/30">
                 <img
                   src={dentaforceDashboard}
                   alt="Dentaforce Dashboard"
-                  className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover w-full transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
-                  <span className="px-6 py-3 text-lg font-mono text-white border rounded-md border-primary">Dashboard View</span>
+                <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/60">
+                  <span className="px-6 py-3 font-mono text-lg text-white rounded-md border border-primary">Dashboard View</span>
                 </div>
               </div>
               <div className="absolute inset-0 blur-3xl bg-primary/10 -z-10" />
@@ -236,7 +265,12 @@ export function Projects() {
         </div>
 
         {/* Tech Specs */}
-        <div className="px-4 py-24 bg-black/30">
+        <div 
+          ref={techRef}
+          className={`px-4 py-24 bg-black/30 transition-all duration-1000 ${
+            techVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <h2 className="mb-16 text-3xl font-bold text-center">
               <span className="text-primary">Technical</span>
@@ -258,7 +292,12 @@ export function Projects() {
         </div>
 
         {/* Platform Stats */}
-        <div className="px-4 py-24 bg-gradient-to-b to-transparent from-black/30">
+        <div 
+          ref={platformsRef}
+          className={`px-4 py-24 bg-gradient-to-b to-transparent from-black/30 transition-all duration-1000 ${
+            platformsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-3">
               {platforms.map((platform, index) => (
