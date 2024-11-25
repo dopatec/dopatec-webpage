@@ -1,31 +1,42 @@
 import React, { useEffect, useRef } from 'react';
 import { Brain, Zap, Target } from 'lucide-react';
+import { DopamineMolecule } from './DopamineMolecule';
 
 export function Dopamine() {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollProgress = 1 - (rect.top / window.innerHeight);
+      
+      // Fade section based on scroll position
+      if (scrollProgress >= 0 && scrollProgress <= 2) {
+        sectionRef.current.style.opacity = Math.min(1, Math.max(0, scrollProgress)).toString();
+      }
 
-    timelineRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+      // Trigger timeline animations sequentially
+      timelineRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+        const itemRect = ref.getBoundingClientRect();
+        const itemVisible = itemRect.top < window.innerHeight * 0.8;
+        
+        if (itemVisible) {
+          ref.classList.add('timeline-item-visible');
+          // Add delay for sequential activation
+          setTimeout(() => {
+            ref.classList.add('timeline-item-active');
+          }, index * 800);
+        }
+      });
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const timelineSteps = [
@@ -47,7 +58,27 @@ export function Dopamine() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-dark dopamine-section">
+    <section ref={sectionRef} className="relative py-20 min-h-screen dopamine-section">
+      <div className="neural-network-bg"></div>
+      <div className="dopamine-particles">
+        {/* Particles will be added dynamically */}
+      </div>
+      
+      {/* Header and Brief Story */}
+      <div className="container relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
+        <div className="mb-4">
+          <DopamineMolecule />
+        </div>
+        <div className="relative">
+          <h2 className="mb-2 heading-xl text-primary glitch-text" data-text="Dopamine.">
+            Dopamine.
+          </h2>
+          <p className="text-2xl text-white whitespace-nowrap md:text-3xl">
+            A brief story about dopamine
+          </p>
+        </div>
+      </div>
+
       <div className="px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
         <div className="section-header">
           <h1 className="mb-6 heading-xl fade-up">
@@ -67,20 +98,12 @@ export function Dopamine() {
               className="timeline-item fade-in-slide"
               style={{ '--delay': `${index * 0.2}s` } as React.CSSProperties}
             >
+              <div className="timeline-icon">
+                {step.icon}
+              </div>
               <div className="timeline-content">
-                <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 icon-wrapper">
-                    {step.icon}
-                  </div>
-                  <div>
-                    <h3 className="mb-3 text-xl text-primary">
-                      {step.title}
-                    </h3>
-                    <p className="font-mono text-base leading-relaxed text-gray-200">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
+                <h3 className="mb-2 heading-sm">{step.title}</h3>
+                <p className="text-body">{step.description}</p>
               </div>
             </div>
           ))}
