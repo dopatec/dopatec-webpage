@@ -8,11 +8,11 @@ export function Project() {
 
   if (!project) {
     return (
-      <div className="pt-16 min-h-screen bg-dark flex items-center justify-center">
+      <div className="flex justify-center items-center pt-16 min-h-screen bg-dark">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-primary mb-4">Projekt hittades inte</h1>
+          <h1 className="mb-4 text-2xl font-bold text-primary">Project was not found.</h1>
           <Link to="/projects" className="text-accent hover:text-accent-light">
-            Tillbaka till alla projekt
+            Back to Projects
           </Link>
         </div>
       </div>
@@ -21,16 +21,16 @@ export function Project() {
 
   return (
     <div className="pt-16 min-h-screen bg-dark">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-dark-lighter rounded-lg shadow-xl p-8">
+      <div className="px-4 py-12 mx-auto max-w-4xl sm:px-6 lg:px-8">
+        <div className="p-8 rounded-lg shadow-xl bg-dark-lighter">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-primary mb-2 flex items-center">
+            <h1 className="flex items-center mb-2 text-4xl font-bold text-primary">
               {project.emoji} {project.name}
             </h1>
           </div>
 
-          <div className="prose prose-invert max-w-none mb-8">
-            <div className="text-gray-200 space-y-4">
+          <div className="mb-8 max-w-none prose prose-invert">
+            <div className="space-y-4 text-gray-200">
               {project.fullDescription.split('\n').map((paragraph, index) => (
                 <p key={index} className="font-mono">{paragraph}</p>
               ))}
@@ -38,12 +38,12 @@ export function Project() {
           </div>
 
           <div className="mt-8">
-            <h2 className="text-2xl font-bold text-primary mb-4">Huvudfunktioner</h2>
+            <h2 className="mb-4 text-2xl font-bold text-primary">Huvudfunktioner</h2>
             <ul className="space-y-2">
               {project.bulletPoints.map((point, index) => (
                 <li key={index} className="flex items-start">
-                  <span className="text-secondary mr-2">•</span>
-                  <span className="text-gray-200 font-mono">{point}</span>
+                  <span className="mr-2 text-secondary">•</span>
+                  <span className="font-mono text-gray-200">{point}</span>
                 </li>
               ))}
             </ul>
@@ -52,9 +52,9 @@ export function Project() {
           <div className="mt-8">
             <Link
               to="/projects"
-              className="inline-flex items-center text-accent hover:text-accent-light transition-colors"
+              className="inline-flex items-center transition-colors text-accent hover:text-accent-light"
             >
-              ← Tillbaka till alla projekt
+              ← Back to projects
             </Link>
           </div>
         </div>

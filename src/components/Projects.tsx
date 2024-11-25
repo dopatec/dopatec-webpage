@@ -175,14 +175,10 @@ export function Projects() {
             <h3 className="mb-4 heading-sm">{project.name}</h3>
             <p className="mb-6 font-mono text-body">{project.description}</p>
             <Link
-              to={`/projects/${project.id}`}
-              className="inline-flex overflow-hidden relative gap-2 items-center px-4 py-2 transition-all duration-500 learn-more-btn group/btn text-primary"
+              to={`/projects`}
+              className="inline-flex items-center gap-2 text-primary hover:gap-4 transition-all duration-300 group-hover:text-white"
             >
-              <span className="relative z-10 transition-transform duration-500 group-hover/btn:translate-x-1">
-                Learn more
-              </span>
-              <ArrowRight className="relative z-10 w-5 h-5 transition-all duration-500 group-hover/btn:translate-x-1" />
-              <div className="absolute inset-0 transition-transform duration-500 transform origin-left scale-x-0 bg-primary/10 group-hover/btn:scale-x-100" />
+              Learn more <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         ))}

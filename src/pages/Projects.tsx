@@ -9,6 +9,7 @@ import dentaforceDashboard from '../assets/dentaforce-dashboard.png';
 export function Projects() {
   const navigate = useNavigate();
 
+    // all the comprehensive features items of the project
   const features = [
     {
       icon: <Brain className="w-8 h-8" />,
@@ -52,6 +53,7 @@ export function Projects() {
     }
   ];
 
+   // all the tech specs items of the project
   const techSpecs = [
     {
       icon: <Code className="w-6 h-6" />,
@@ -74,7 +76,7 @@ export function Projects() {
       description: "HIPAA compliant with end-to-end encryption"
     }
   ];
-
+  // all the platforms items of the project
   const platforms = [
     {
       icon: <Phone className="w-12 h-12" />,
@@ -137,7 +139,7 @@ export function Projects() {
                 </button>
                 <button 
                   onClick={() => navigate('/projects')}
-                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-white btn border border-primary hover:bg-primary/10"
+                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-white border btn border-primary hover:bg-primary/10"
                 >
                   View All Projects
                 </button>
@@ -178,16 +180,16 @@ export function Projects() {
 
         {/* App Mockups Section */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-center mb-8">App Interface</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="mb-8 text-3xl font-bold text-center">App Interface</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="relative group">
               <img
                 src={dentaforceMockup}
                 alt="Dentaforce App Interface"
                 className="rounded-lg shadow-lg transition-opacity duration-300 group-hover:opacity-90"
               />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="bg-black bg-opacity-75 text-white px-4 py-2 rounded-md">Mobile Interface</span>
+              <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="px-4 py-2 text-white bg-black bg-opacity-75 rounded-md">Mobile Interface</span>
               </div>
             </div>
             <div className="relative group">
@@ -196,8 +198,8 @@ export function Projects() {
                 alt="Dentaforce Dashboard"
                 className="rounded-lg shadow-lg transition-opacity duration-300 group-hover:opacity-90"
               />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="bg-black bg-opacity-75 text-white px-4 py-2 rounded-md">Dashboard View</span>
+              <div className="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="px-4 py-2 text-white bg-black bg-opacity-75 rounded-md">Dashboard View</span>
               </div>
             </div>
           </div>
@@ -234,7 +236,7 @@ export function Projects() {
             <div className="grid gap-8 md:grid-cols-4">
               {techSpecs.map((spec, index) => (
                 <div key={index} className="p-6 text-center rounded-xl bg-black/30">
-                  <div className="mx-auto mb-4 p-3 w-12 h-12 rounded-xl text-primary bg-primary/10">
+                  <div className="p-3 mx-auto mb-4 w-12 h-12 rounded-xl text-primary bg-primary/10">
                     {spec.icon}
                   </div>
                   <h3 className="mb-2 text-lg font-bold text-primary">{spec.title}</h3>
@@ -246,12 +248,12 @@ export function Projects() {
         </div>
 
         {/* Platform Stats */}
-        <div className="px-4 py-24 bg-gradient-to-b from-black/30 to-transparent">
+        <div className="px-4 py-24 bg-gradient-to-b to-transparent from-black/30">
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="grid gap-8 md:grid-cols-3">
               {platforms.map((platform, index) => (
                 <div key={index} className="p-8 text-center rounded-xl bg-black/30">
-                  <div className="mx-auto mb-4 p-4 w-20 h-20 rounded-full text-primary bg-primary/10">
+                  <div className="p-4 mx-auto mb-4 w-20 h-20 rounded-full text-primary bg-primary/10">
                     {platform.icon}
                   </div>
                   <h3 className="mb-2 text-xl font-bold text-white">{platform.name}</h3>
@@ -291,7 +293,7 @@ export function Projects() {
               {" "}
               <span className="text-white">Transform Your Practice?</span>
             </h2>
-            <p className="mx-auto mb-12 text-center font-mono text-xl text-gray-300">
+            <p className="mx-auto mb-12 font-mono text-xl text-center text-gray-300">
               Join the future of dental education and practice management.
             </p>
             <button 

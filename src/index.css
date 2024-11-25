@@ -939,8 +939,8 @@
 
   .glitch-text::before {
     left: 2px;
-    text-shadow: -1px 0 rgba(252, 220, 0, 0.5);
-    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+    text-shadow: -1px 0 rgba(252, 234, 0, 0.7);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
   }
 
   .glitch-text::after {
@@ -2018,10 +2018,39 @@
       opacity: 0;
     }
   }
+
 }
 
 @layer utilities {
   .bg-gradient-radial {
     background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+
+  /* Fade in animations */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, visibility;
+  }
+
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  /* Different animation delays for children */
+  .fade-in-section.delay-1 {
+    transition-delay: 0.1s;
+  }
+
+  .fade-in-section.delay-2 {
+    transition-delay: 0.2s;
+  }
+
+  .fade-in-section.delay-3 {
+    transition-delay: 0.3s;
   }
 }
