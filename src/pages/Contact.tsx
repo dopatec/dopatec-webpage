@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react';
 import { useFadeIn } from '../hooks/useFadeIn';
+import { useCMS } from '../cms/CMSContext';
 
 const ContactPage = () => {
   // Initialize fade-in refs for different sections
@@ -8,6 +9,9 @@ const ContactPage = () => {
   const [contactInfoRef, contactInfoVisible] = useFadeIn();
   const [socialRef, socialVisible] = useFadeIn();
   const [formRef, formVisible] = useFadeIn();
+
+  const { content } = useCMS();
+  const contactContent = content.contact;
 
   return (
     <div className="relative min-h-screen bg-black/95">
@@ -29,19 +33,17 @@ const ContactPage = () => {
                 headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
             >
-              <h1 className="mb-8 heading-xl glitch-text" data-text="Get in Touch.">
+              <h1 className="mb-8 heading-xl glitch-text" data-text={contactContent.sections.hero.title}>
                 <span className="text-primary">Get in</span>
                 {" "}
                 <span className="text-white">Touch</span>
                 <span className="text-primary">.</span>
               </h1>
               <p className="mb-12 font-mono text-xl leading-relaxed text-gray-300">
-                We would love to hear from you! Whether you're an investor interested in our
-                innovative approach or a professional seeking cutting-edge learning solutions, don't hesitate to reach out.
+                {contactContent.sections.hero.description}
               </p>
               <p className="mb-12 font-mono text-xl leading-relaxed text-gray-300">
-                We are committed to transforming digital engagement into positive learning experiences.
-                Let's collaborate to unlock human potential through technology and neuroscience.
+                {contactContent.sections.hero.subDescription}
               </p>
             </div>
 
@@ -54,17 +56,17 @@ const ContactPage = () => {
             >
               <div className="flex gap-4 items-center">
                 <Mail className="w-6 h-6 text-primary" />
-                <a href="mailto:contact@dopatec.com" className="font-mono text-lg text-gray-300 hover:text-primary">
-                  info@dopatec.com
+                <a href={`mailto:${contactContent.sections.contact.email}`} className="font-mono text-lg text-gray-300 hover:text-primary">
+                  {contactContent.sections.contact.email}
                 </a>
               </div>
               <div className="flex gap-4 items-center">
                 <Phone className="w-6 h-6 text-primary" />
-                <span className="font-mono text-lg text-gray-300">+1 (555) 123-4567</span>
+                <span className="font-mono text-lg text-gray-300">{contactContent.sections.contact.phone}</span>
               </div>
               <div className="flex gap-4 items-center">
                 <MapPin className="w-6 h-6 text-primary" />
-                <span className="font-mono text-lg text-gray-300">Malmö, Sweden</span>
+                <span className="font-mono text-lg text-gray-300">{contactContent.sections.contact.location}</span>
               </div>
             </div>
 
@@ -93,7 +95,9 @@ const ContactPage = () => {
           >
             <form className="mx-auto space-y-6 max-w-xl">
               <div className="w-full">
-                <label htmlFor="name" className="block mb-2 font-mono text-gray-300">Name</label>
+                <label htmlFor="name" className="block mb-2 font-mono text-gray-300">
+                  {contactContent.sections.form.fields.name}
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -102,7 +106,9 @@ const ContactPage = () => {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="email" className="block mb-2 font-mono text-gray-300">Email</label>
+                <label htmlFor="email" className="block mb-2 font-mono text-gray-300">
+                  {contactContent.sections.form.fields.email}
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -111,7 +117,9 @@ const ContactPage = () => {
                 />
               </div>
               <div className="w-full">
-                <label htmlFor="message" className="block mb-2 font-mono text-gray-300">Message</label>
+                <label htmlFor="message" className="block mb-2 font-mono text-gray-300">
+                  {contactContent.sections.form.fields.message}
+                </label>
                 <textarea
                   id="message"
                   rows={4}
@@ -124,7 +132,7 @@ const ContactPage = () => {
                 className="inline-flex overflow-hidden relative gap-2 items-center px-8 py-3 font-mono text-black btn bg-primary hover:bg-primary-light group"
               >
                 <span className="relative z-10 transition-transform duration-500 group-hover:translate-x-1">
-                  Send Message
+                  {contactContent.sections.form.button}
                 </span>
                 <ArrowRight className="relative z-10 w-5 h-5 transition-all duration-500 group-hover:translate-x-1" />
                 <div className="absolute inset-0 transition-transform duration-500 transform origin-left scale-x-0 bg-white/10 group-hover:scale-x-100" />
