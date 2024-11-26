@@ -47,7 +47,7 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
       }
 
       return (
-        <div key={pathString} className="ml-4 mb-2">
+        <div key={pathString} className="mb-2 ml-4">
           <button
             onClick={() => handleSelect(currentPath)}
             className={`p-2 rounded hover:bg-primary/10 ${
@@ -69,9 +69,9 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
   if (process.env.NODE_ENV !== 'development' || !isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end">
+    <div className="flex fixed inset-0 z-50 justify-end">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="relative w-full max-w-2xl h-full bg-black/95 shadow-xl overflow-hidden">
+      <div className="overflow-hidden relative w-full max-w-2xl h-full shadow-xl bg-black/95">
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="p-4 border-b border-gray-800">
@@ -80,10 +80,10 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-auto">
+          <div className="overflow-auto flex-1">
             <div className="grid grid-cols-2 h-full">
               {/* Content Tree */}
-              <div className="p-4 border-r border-gray-800 overflow-auto">
+              <div className="overflow-auto p-4 border-r border-gray-800">
                 {renderContentEditor(content)}
               </div>
 
@@ -98,11 +98,11 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
                     <textarea
                       value={editValue}
                       onChange={(e) => setEditValue(e.target.value)}
-                      className="w-full h-32 p-2 bg-black/50 border border-gray-700 rounded-lg text-white"
+                      className="p-2 w-full h-32 text-white rounded-lg border border-gray-700 bg-black/50"
                     />
                     <button
                       onClick={handleUpdate}
-                      className="px-4 py-2 text-black bg-primary rounded hover:bg-primary-light"
+                      className="px-4 py-2 text-black rounded bg-primary hover:bg-primary-light"
                     >
                       Update Content
                     </button>
