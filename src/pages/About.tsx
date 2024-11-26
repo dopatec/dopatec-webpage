@@ -116,36 +116,41 @@ export function About() {
                     <span className="text-primary">Our</span>{" "}
                     <span className="text-white">Team</span>
                   </h2>
-                  <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-16">
+                  <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-16 max-w-5xl mx-auto">
                     {team.map((member, index) => {
                       const [memberRef, memberVisible] = useFadeIn();
                       return (
                         <div
                           key={index}
                           ref={memberRef}
-                          className={`fade-in-section delay-${index + 1} ${memberVisible ? 'is-visible' : ''} p-6 backdrop-blur-sm rounded-xl bg-black/30`}
+                          className={`fade-in-section delay-${index + 1} ${memberVisible ? 'is-visible' : ''} p-6 backdrop-blur-sm rounded-xl bg-black/30 relative overflow-hidden h-[600px]`}
                         >
-                          <div className="overflow-hidden relative mx-auto mb-6 w-48 h-48 rounded-full">
+                          <div className="absolute inset-0 -z-10 px-8 pt-8">
                             <img
                               src={member.image}
                               alt={member.name}
-                              className="object-cover w-full h-full"
+                              className="object-contain w-full h-full opacity-100"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" style={{ backgroundImage: 'linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%)' }} />
                           </div>
-                          <h3 className="mb-2 text-2xl font-bold text-primary">{member.name}</h3>
-                          <p className="mb-4 font-mono text-gray-300">{member.role}</p>
-                          <div className="flex gap-4 justify-center">
-                            {member.social.map((link, i) => (
-                              <a
-                                key={i}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-2 text-gray-400 rounded-full transition-colors duration-300 hover:text-primary hover:bg-primary/10"
-                              >
-                                {link.icon}
-                              </a>
-                            ))}
+                          <div className="relative z-10 mt-auto flex flex-col h-full">
+                            <div className="mt-auto">
+                              <h3 className="mb-2 text-2xl font-bold text-primary">{member.name}</h3>
+                              <p className="mb-4 font-mono text-gray-300">{member.role}</p>
+                              <div className="flex gap-4 justify-center">
+                                {member.social.map((link, i) => (
+                                  <a
+                                    key={i}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 text-gray-400 rounded-full transition-colors duration-300 hover:text-primary hover:bg-primary/10"
+                                  >
+                                    {link.icon}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       );
