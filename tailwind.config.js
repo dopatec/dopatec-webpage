@@ -5,24 +5,34 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FCEA00', // Yellow
-          dark: '#E5D400',
-          light: '#FFF04D',
-        },
-        secondary: {
-          DEFAULT: '#48CAE4', // Light Blue from logo
-          dark: '#00B4D8',
-          light: '#90E0EF',
-        },
-        accent: {
-          DEFAULT: '#48CAE4', // Light Blue
-          dark: '#00B4D8',
-          light: '#90E0EF',
+          DEFAULT: '#8989DE', // Purple accent color
+          dark: '#7272D6',
+          light: '#A0A0E6',
         },
         dark: {
-          DEFAULT: '#161616', // Updated gray background
-          lighter: '#222222',
-          light: '#2A2A2A',
+          DEFAULT: '#141413', // Main dark background
+          lighter: '#0F1115', // Secondary dark shade
+          light: '#131C24', // Lighter dark shade
+        },
+        purple: {
+          DEFAULT: '#8989DE',
+          dark: '#7272D6',
+          light: '#A0A0E6',
+          10: 'rgba(137, 137, 222, 0.1)',
+          20: 'rgba(137, 137, 222, 0.2)',
+          30: 'rgba(137, 137, 222, 0.3)',
+          40: 'rgba(137, 137, 222, 0.4)',
+          50: 'rgba(137, 137, 222, 0.5)',
+        },
+        secondary: {
+          DEFAULT: '#6366F1', // Indigo color
+          dark: '#4F46E5',
+          light: '#818CF8',
+        },
+        accent: {
+          DEFAULT: '#10B981', // Emerald color
+          dark: '#059669',
+          light: '#34D399',
         },
       },
       fontFamily: {
@@ -37,7 +47,11 @@ export default {
         bold: '700',
         black: '900',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [],
-};
+}
