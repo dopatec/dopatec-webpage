@@ -10,7 +10,7 @@
   }
   
   body {
-    @apply font-normal text-left text-white bg-dark font-teknaf;
+    @apply font-normal text-left text-gray-200 bg-dark font-teknaf;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -18,7 +18,7 @@
   }
 
   p {
-    @apply font-normal text-left text-gray-200 font-teknaf;
+    @apply font-normal text-left text-gray-300 font-teknaf;
   }
 }
 
@@ -32,27 +32,23 @@
   }
 
   .btn {
-    @apply inline-flex justify-start items-center px-6 py-3 font-normal rounded-none transition-all duration-300 transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark focus:outline-none hover:-translate-y-0.5;
+    @apply inline-flex justify-start items-center px-6 py-3 font-normal rounded-sm transition-all duration-300 transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark focus:outline-none hover:-translate-y-0.5;
   }
 
   .btn-primary {
-    @apply shadow-lg btn bg-primary text-secondary hover:bg-primary-light hover:shadow-primary/50;
+    @apply shadow-lg btn bg-primary text-dark hover:bg-primary-light hover:shadow-primary/50;
   }
 
   .btn-secondary {
-    @apply text-white shadow-lg btn bg-secondary hover:bg-secondary-light hover:shadow-secondary/50;
+    @apply text-gray-200 shadow-lg btn bg-dark-lighter hover:bg-dark-light hover:shadow-dark/50;
   }
 
   .btn-outline {
-    @apply border-2 shadow-lg btn border-primary text-primary hover:bg-primary hover:text-secondary hover:shadow-primary/50;
+    @apply border-2 shadow-lg btn border-primary text-primary hover:bg-primary hover:text-dark hover:shadow-primary/50;
   }
 
   .nav-link {
     @apply relative font-normal text-gray-300 transition-colors duration-200 hover:text-primary after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all after:duration-300;
-  }
-
-  .nav-link.active {
-    @apply text-primary after:w-full;
   }
 
   .heading-xl {
@@ -72,19 +68,19 @@
   }
 
   .text-body {
-    @apply ml-0 text-base leading-relaxed text-gray-200;
+    @apply ml-0 text-base leading-relaxed text-gray-300;
   }
 
   .text-body-bold {
-    @apply ml-0 text-base font-normal leading-relaxed text-gray-200;
+    @apply ml-0 text-base font-normal leading-relaxed text-gray-300;
   }
 
   .input-field {
-    @apply px-4 py-2 w-full placeholder-gray-400 text-left text-white rounded-lg border transition-all duration-200 bg-secondary-light border-secondary-light focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply px-4 py-2 w-full placeholder-gray-400 text-left text-gray-200 rounded-lg border transition-all duration-200 bg-dark-lighter border-dark-lighter focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
   }
 
   .form-label {
-    @apply block mb-2 text-sm font-bold text-left text-gray-200;
+    @apply block mb-2 text-sm font-bold text-left text-gray-300;
   }
 
   .error-text {
@@ -139,11 +135,11 @@
   .bg-gradient-animated {
     background: linear-gradient(
       45deg,
-      rgba(252, 234, 0, 0.1) 0%,
-      rgba(252, 234, 0, 0.05) 25%,
+      rgba(128, 0, 128, 0.1) 0%,
+      rgba(128, 0, 128, 0.05) 25%,
       rgba(0, 0, 0, 0) 50%,
-      rgba(252, 234, 0, 0.05) 75%,
-      rgba(252, 234, 0, 0.1) 100%
+      rgba(128, 0, 128, 0.05) 75%,
+      rgba(128, 0, 128, 0.1) 100%
     );
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
@@ -171,14 +167,14 @@
   }
 
   .glow-orb-1 {
-    @apply bg-primary/30;
+    @apply bg-purple/30;
     top: 20%;
     left: -100px;
     animation: floatOrb1 20s ease-in-out infinite;
   }
 
   .glow-orb-2 {
-    @apply bg-primary/20;
+    @apply bg-purple/20;
     bottom: 10%;
     right: -150px;
     animation: floatOrb2 25s ease-in-out infinite;
@@ -217,14 +213,14 @@
   /* Tech Grid Pattern */
   .tech-grid {
     background-image: 
-      linear-gradient(to right, rgba(252, 234, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(252, 234, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(128, 0, 128, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 0, 128, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
   /* Circuit Pattern */
   .circuit-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0 V15 H0 M85 0 V15 H100 M0 85 H15 V100 M85 100 V85 H100' stroke='rgba(252, 234, 0, 0.2)' fill='none'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0 V15 H0 M85 0 V15 H100 M0 85 H15 V100 M85 100 V85 H100' stroke='rgba(128, 0, 128, 0.2)' fill='none'/%3E%3C/svg%3E");
     background-size: 50px 50px;
   }
 
@@ -234,7 +230,7 @@
   }
 
   .neuron-path {
-    @apply absolute bg-primary/10;
+    @apply absolute bg-purple/10;
     height: 2px;
     transform-origin: left center;
   }
@@ -275,7 +271,7 @@
   }
 
   .signal-pulse {
-    @apply absolute h-full bg-primary;
+    @apply absolute h-full bg-purple;
     width: 20px;
     filter: blur(5px);
     animation: signalPulse 3s linear infinite;
@@ -306,7 +302,7 @@
 
   .timeline::before {
     content: '';
-    @apply absolute left-0 w-0.5 opacity-0 bg-primary;
+    @apply absolute left-0 w-0.5 opacity-0 bg-purple;
     height: calc(100% - 24px);
     top: 12px;
     animation: growLine 1.5s ease-out forwards;
@@ -321,7 +317,7 @@
 
   .timeline-item::before {
     content: '';
-    @apply absolute left-[-4px] top-1 h-3 w-3 rounded-full bg-primary;
+    @apply absolute left-[-4px] top-1 h-3 w-3 rounded-full bg-purple;
     animation: pulse 2s infinite;
   }
 
@@ -331,7 +327,7 @@
 
   .timeline-content:hover {
     @apply shadow-xl transform -translate-y-1;
-    box-shadow: 0 10px 30px -10px rgba(252, 234, 0, 0.2);
+    box-shadow: 0 10px 30px -10px rgba(128, 0, 128, 0.2);
   }
 
   @keyframes growLine {
@@ -347,13 +343,13 @@
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(252, 234, 0, 0.4);
+      box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.4);
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(252, 234, 0, 0);
+      box-shadow: 0 0 0 10px rgba(128, 0, 128, 0);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(252, 234, 0, 0);
+      box-shadow: 0 0 0 0 rgba(128, 0, 128, 0);
     }
   }
 
@@ -427,7 +423,7 @@
   }
 
   .particle {
-    @apply absolute rounded-full bg-primary;
+    @apply absolute rounded-full bg-purple;
     width: 4px;
     height: 4px;
     filter: blur(2px);
@@ -537,9 +533,9 @@
     width: 2px;
     background: linear-gradient(
       to bottom,
-      rgba(252, 234, 0, 0.1),
-      rgba(252, 234, 0, 0.3),
-      rgba(252, 234, 0, 0.1)
+      rgba(128, 0, 128, 0.1),
+      rgba(128, 0, 128, 0.3),
+      rgba(128, 0, 128, 0.1)
     );
   }
 
@@ -572,14 +568,14 @@
   .icon-wrapper {
     position: relative;
     padding: 1rem;
-    background: rgba(252, 234, 0, 0.1);
+    background: rgba(128, 0, 128, 0.1);
     border-radius: 0.5rem;
     transition: transform 0.3s ease-out;
   }
 
   .icon-wrapper:hover {
     transform: scale(1.1);
-    background: rgba(252, 234, 0, 0.2);
+    background: rgba(128, 0, 128, 0.2);
   }
 
   .timeline-content {
@@ -587,13 +583,13 @@
     padding: 1.5rem;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
-    border: 1px solid rgba(252, 234, 0, 0.1);
+    border: 1px solid rgba(128, 0, 128, 0.1);
     transition: transform 0.3s ease-out;
   }
 
   .timeline-content:hover {
     transform: translateX(10px);
-    border-color: rgba(252, 234, 0, 0.3);
+    border-color: rgba(128, 0, 128, 0.3);
   }
 
   /* Synapses */
@@ -619,7 +615,7 @@
   }
 
   .synapse-glow {
-    @apply absolute rounded-full bg-primary/20;
+    @apply absolute rounded-full bg-purple/20;
     width: 100%;
     height: 100%;
     filter: blur(20px);
@@ -644,7 +640,7 @@
     background: linear-gradient(
       to bottom,
       transparent 50%,
-      rgba(252, 234, 0, 0.03) 50%
+      rgba(128, 0, 128, 0.03) 50%
     );
     background-size: 100% 4px;
     animation: scanlines 1s steps(60) infinite;
@@ -676,7 +672,7 @@
     overflow: hidden;
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(252, 234, 0, 0.1);
+    border: 1px solid rgba(128, 0, 128, 0.1);
   }
 
   .team-member-image-placeholder {
@@ -684,9 +680,9 @@
     inset: 0;
     background: linear-gradient(
       45deg,
-      rgba(252, 234, 0, 0.05),
+      rgba(128, 0, 128, 0.05),
       rgba(0, 0, 0, 0.2),
-      rgba(252, 234, 0, 0.1)
+      rgba(128, 0, 128, 0.1)
     );
   }
 
@@ -695,8 +691,8 @@
     inset: 0;
     opacity: 0.1;
     background-image: 
-      linear-gradient(90deg, rgba(252, 234, 0, 0.1) 1px, transparent 1px),
-      linear-gradient(rgba(252, 234, 0, 0.1) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(128, 0, 128, 0.1) 1px, transparent 1px),
+      linear-gradient(rgba(128, 0, 128, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
     mask-image: radial-gradient(circle at center, black 60%, transparent);
     animation: circuitPulse 4s ease-in-out infinite;
@@ -707,7 +703,7 @@
     inset: 0;
     background: radial-gradient(
       circle at 50% 0%,
-      rgba(252, 234, 0, 0.2),
+      rgba(128, 0, 128, 0.2),
       transparent 70%
     );
     opacity: 0;
@@ -740,7 +736,7 @@
     background: linear-gradient(
       45deg,
       transparent,
-      rgba(252, 234, 0, 0.1),
+      rgba(128, 0, 128, 0.1),
       transparent
     );
     border-radius: 21px;
@@ -778,8 +774,8 @@
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(90deg, rgba(252, 234, 0, 0.03) 1px, transparent 1px) 0 0 / 20px 20px,
-      linear-gradient(rgba(252, 234, 0, 0.03) 1px, transparent 1px) 0 0 / 20px 20px;
+      linear-gradient(90deg, rgba(128, 0, 128, 0.03) 1px, transparent 1px) 0 0 / 20px 20px,
+      linear-gradient(rgba(128, 0, 128, 0.03) 1px, transparent 1px) 0 0 / 20px 20px;
     opacity: 0.5;
   }
 
@@ -796,7 +792,7 @@
     height: 100%;
     background: radial-gradient(
       circle at var(--x, 50%) var(--y, 50%),
-      rgba(252, 234, 0, 0.1) 0%,
+      rgba(128, 0, 128, 0.1) 0%,
       transparent 50%
     );
     transition: all 0.3s ease-out;
@@ -815,7 +811,7 @@
     top: 2rem;
     bottom: 2rem;
     width: 2px;
-    background: rgba(252, 234, 0, 0.2);
+    background: rgba(128, 0, 128, 0.2);
   }
 
   .timeline-item {
@@ -869,7 +865,7 @@
     position: relative;
     padding: 2rem;
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(252, 234, 0, 0.1);
+    border: 1px solid rgba(128, 0, 128, 0.1);
   }
 
   .tech-frame-corner {
@@ -916,7 +912,7 @@
   .icon-container {
     display: inline-flex;
     padding: 1rem;
-    background: rgba(252, 234, 0, 0.1);
+    background: rgba(128, 0, 128, 0.1);
     margin-bottom: 1rem;
   }
 
@@ -939,13 +935,13 @@
 
   .glitch-text::before {
     left: 2px;
-    text-shadow: -1px 0 rgba(252, 234, 0, 0.7);
+    text-shadow: -1px 0 rgba(128, 0, 128, 0.7);
     animation: glitch-anim-1 2s infinite linear alternate-reverse;
   }
 
   .glitch-text::after {
     left: -2px;
-    text-shadow: 2px 0 rgba(252, 234, 0, 0.7);
+    text-shadow: 2px 0 rgba(128, 0, 128, 0.7);
     animation: glitch-anim-2 3s infinite linear alternate-reverse;
   }
 
@@ -1026,7 +1022,7 @@
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background: #FCEA00;
+    background: #800080;
     border-radius: 50%;
     animation: pulse 2s infinite;
   }
@@ -1038,7 +1034,7 @@
     transform: translate(-50%, -50%);
     width: 2px;
     height: 30px;
-    background: #FCEA00;
+    background: #800080;
     animation: moveDown 2s infinite;
   }
 
@@ -1049,7 +1045,7 @@
     bottom: 0;
     width: 2px;
     height: 10px;
-    background: #FCEA00;
+    background: #800080;
   }
 
   .scroll-arrow::before {
@@ -1136,7 +1132,7 @@
     inset: 0;
     background: linear-gradient(90deg, 
       transparent, 
-      rgba(252, 234, 0, 0.1), 
+      rgba(128, 0, 128, 0.1), 
       transparent
     );
     transform: translateX(-100%);
@@ -1156,7 +1152,7 @@
     height: 1px;
     background: linear-gradient(90deg,
       transparent,
-      rgba(252, 234, 0, 0.5),
+      rgba(128, 0, 128, 0.5),
       transparent
     );
     transform: scaleX(0);
@@ -1174,7 +1170,7 @@
   }
 
   .particle {
-    @apply absolute rounded-full bg-primary;
+    @apply absolute rounded-full bg-purple;
     width: 4px;
     height: 4px;
     filter: blur(2px);
@@ -1284,9 +1280,9 @@
     width: 2px;
     background: linear-gradient(
       to bottom,
-      rgba(252, 234, 0, 0.1),
-      rgba(252, 234, 0, 0.3),
-      rgba(252, 234, 0, 0.1)
+      rgba(128, 0, 128, 0.1),
+      rgba(128, 0, 128, 0.3),
+      rgba(128, 0, 128, 0.1)
     );
   }
 
@@ -1319,14 +1315,14 @@
   .icon-wrapper {
     position: relative;
     padding: 1rem;
-    background: rgba(252, 234, 0, 0.1);
+    background: rgba(128, 0, 128, 0.1);
     border-radius: 0.5rem;
     transition: transform 0.3s ease-out;
   }
 
   .icon-wrapper:hover {
     transform: scale(1.1);
-    background: rgba(252, 234, 0, 0.2);
+    background: rgba(128, 0, 128, 0.2);
   }
 
   .timeline-content {
@@ -1334,13 +1330,13 @@
     padding: 1.5rem;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
-    border: 1px solid rgba(252, 234, 0, 0.1);
+    border: 1px solid rgba(128, 0, 128, 0.1);
     transition: transform 0.3s ease-out;
   }
 
   .timeline-content:hover {
     transform: translateX(10px);
-    border-color: rgba(252, 234, 0, 0.3);
+    border-color: rgba(128, 0, 128, 0.3);
   }
 
   /* Synapses */
@@ -1366,7 +1362,7 @@
   }
 
   .synapse-glow {
-    @apply absolute rounded-full bg-primary/20;
+    @apply absolute rounded-full bg-purple/20;
     width: 100%;
     height: 100%;
     filter: blur(20px);
@@ -1391,7 +1387,7 @@
     background: linear-gradient(
       to bottom,
       transparent 50%,
-      rgba(252, 234, 0, 0.03) 50%
+      rgba(128, 0, 128, 0.03) 50%
     );
     background-size: 100% 4px;
     animation: scanlines 1s steps(60) infinite;
@@ -1423,7 +1419,7 @@
     overflow: hidden;
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(252, 234, 0, 0.1);
+    border: 1px solid rgba(128, 0, 128, 0.1);
   }
 
   .team-member-image-placeholder {
@@ -1431,9 +1427,9 @@
     inset: 0;
     background: linear-gradient(
       45deg,
-      rgba(252, 234, 0, 0.05),
+      rgba(128, 0, 128, 0.05),
       rgba(0, 0, 0, 0.2),
-      rgba(252, 234, 0, 0.1)
+      rgba(128, 0, 128, 0.1)
     );
   }
 
@@ -1442,8 +1438,8 @@
     inset: 0;
     opacity: 0.1;
     background-image: 
-      linear-gradient(90deg, rgba(252, 234, 0, 0.1) 1px, transparent 1px),
-      linear-gradient(rgba(252, 234, 0, 0.1) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(128, 0, 128, 0.1) 1px, transparent 1px),
+      linear-gradient(rgba(128, 0, 128, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
     mask-image: radial-gradient(circle at center, black 60%, transparent);
     animation: circuitPulse 4s ease-in-out infinite;
@@ -1454,7 +1450,7 @@
     inset: 0;
     background: radial-gradient(
       circle at 50% 0%,
-      rgba(252, 234, 0, 0.2),
+      rgba(128, 0, 128, 0.2),
       transparent 70%
     );
     opacity: 0;
@@ -1487,7 +1483,7 @@
     background: linear-gradient(
       45deg,
       transparent,
-      rgba(252, 234, 0, 0.1),
+      rgba(128, 0, 128, 0.1),
       transparent
     );
     border-radius: 21px;
@@ -1525,8 +1521,8 @@
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(90deg, rgba(252, 234, 0, 0.03) 1px, transparent 1px) 0 0 / 20px 20px,
-      linear-gradient(rgba(252, 234, 0, 0.03) 1px, transparent 1px) 0 0 / 20px 20px;
+      linear-gradient(90deg, rgba(128, 0, 128, 0.03) 1px, transparent 1px) 0 0 / 20px 20px,
+      linear-gradient(rgba(128, 0, 128, 0.03) 1px, transparent 1px) 0 0 / 20px 20px;
     opacity: 0.5;
   }
 
@@ -1543,7 +1539,7 @@
     height: 100%;
     background: radial-gradient(
       circle at var(--x, 50%) var(--y, 50%),
-      rgba(252, 234, 0, 0.1) 0%,
+      rgba(128, 0, 128, 0.1) 0%,
       transparent 50%
     );
     transition: all 0.3s ease-out;
@@ -1562,7 +1558,7 @@
     top: 2rem;
     bottom: 2rem;
     width: 2px;
-    background: rgba(252, 234, 0, 0.2);
+    background: rgba(128, 0, 128, 0.2);
   }
 
   .timeline-item {
@@ -1616,7 +1612,7 @@
     position: relative;
     padding: 2rem;
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(252, 234, 0, 0.1);
+    border: 1px solid rgba(128, 0, 128, 0.1);
   }
 
   .tech-frame-corner {
@@ -1663,7 +1659,7 @@
   .icon-container {
     display: inline-flex;
     padding: 1rem;
-    background: rgba(252, 234, 0, 0.1);
+    background: rgba(128, 0, 128, 0.1);
     margin-bottom: 1rem;
   }
 
@@ -1686,13 +1682,13 @@
 
   .glitch-text::before {
     left: 2px;
-    text-shadow: -1px 0 rgba(252, 234, 0, 0.7);
+    text-shadow: -1px 0 rgba(128, 0, 128, 0.7);
     animation: glitch-anim-1 2s infinite linear alternate-reverse;
   }
 
   .glitch-text::after {
     left: -2px;
-    text-shadow: 2px 0 rgba(252, 234, 0, 0.7);
+    text-shadow: 2px 0 rgba(128, 0, 128, 0.7);
     animation: glitch-anim-2 3s infinite linear alternate-reverse;
   }
 
@@ -1773,7 +1769,7 @@
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background: #FCEA00;
+    background: #800080;
     border-radius: 50%;
     animation: pulse 2s infinite;
   }
@@ -1785,7 +1781,7 @@
     transform: translate(-50%, -50%);
     width: 2px;
     height: 30px;
-    background: #FCEA00;
+    background: #800080;
     animation: moveDown 2s infinite;
   }
 
@@ -1796,7 +1792,7 @@
     bottom: 0;
     width: 2px;
     height: 10px;
-    background: #FCEA00;
+    background: #800080;
   }
 
   .scroll-arrow::before {
@@ -1868,7 +1864,7 @@
   }
 
   .molecule-node {
-    fill: #FCEA00;
+    fill: #800080;
     animation: nodePulse 4s ease-in-out infinite;
   }
 
@@ -1880,11 +1876,11 @@
 
   @keyframes glowPulse {
     0%, 100% {
-      filter: drop-shadow(0 0 2px rgba(252, 234, 0, 0.5));
+      filter: drop-shadow(0 0 2px rgba(128, 0, 128, 0.5));
       stroke-width: 2;
     }
     50% {
-      filter: drop-shadow(0 0 8px rgba(252, 234, 0, 0.8));
+      filter: drop-shadow(0 0 8px rgba(128, 0, 128, 0.8));
       stroke-width: 3;
     }
   }
@@ -1892,11 +1888,11 @@
   @keyframes nodePulse {
     0%, 100% {
       r: 4;
-      filter: drop-shadow(0 0 2px rgba(252, 234, 0, 0.5));
+      filter: drop-shadow(0 0 2px rgba(128, 0, 128, 0.5));
     }
     50% {
       r: 5;
-      filter: drop-shadow(0 0 8px rgba(252, 234, 0, 0.8));
+      filter: drop-shadow(0 0 8px rgba(128, 0, 128, 0.8));
     }
   }
 
@@ -1984,7 +1980,7 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(252, 234, 0, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(128, 0, 128, 0.2), transparent);
   }
 
   .neuron-path-1 { transform: rotate(0deg); top: 20%; }
@@ -1998,7 +1994,7 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: rgba(252, 234, 0, 0.6);
+    background: rgba(128, 0, 128, 0.6);
     animation: signalMove 3s linear infinite;
   }
 
