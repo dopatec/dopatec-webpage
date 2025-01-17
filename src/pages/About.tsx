@@ -7,7 +7,7 @@ export function About() {
   const team = [
     {
       name: "Carl Pohl",
-      role: "CEO",
+      role: "Founder and CTO",
       image: carl,
       social: [
         { url: "#", icon: <Linkedin className="w-6 h-6" /> },
@@ -16,7 +16,7 @@ export function About() {
     },
     {
       name: "Robert Hansson",
-      role: "CEO",
+      role: "Co-founder",
       image: robertPlaceholder,
       social: [
         { url: "#", icon: <Linkedin className="w-6 h-6" /> },
@@ -86,14 +86,14 @@ export function About() {
             <span className="text-primary">Our</span>{" "}
             <span className="text-white">Team</span>
           </h2>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:gap-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 gap-12 mx-auto max-w-4xl md:grid-cols-2 lg:gap-16">
             {team.map((member, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl backdrop-blur-sm relative overflow-hidden"
+                className="overflow-hidden relative p-6 rounded-xl backdrop-blur-sm"
               >
                 <div className="mb-8">
-                  <div className="w-64 h-64 mx-auto rounded-full overflow-hidden">
+                  <div className="overflow-hidden mx-auto w-64 h-64 rounded-full">
                     <img
                       src={member.image}
                       alt={member.name}
