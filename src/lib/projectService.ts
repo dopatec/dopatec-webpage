@@ -17,7 +17,7 @@ export async function fetchProjects(): Promise<Project[]> {
 
     // För varje projekt, hämta teknologier och milstolpar
     const projectsWithDetails = await Promise.all(
-      projects.map(async (project) => {
+      projects.map(async project => {
         // Hämta teknologier för projektet
         const { data: technologies, error: techError } = await supabase
           .from('project_technologies')
@@ -47,14 +47,17 @@ export async function fetchProjects(): Promise<Project[]> {
           .order('display_order', { ascending: true });
 
         if (bulletPointsError) {
-          console.error(`Error fetching bullet points for project ${project.id}:`, bulletPointsError);
+          console.error(
+            `Error fetching bullet points for project ${project.id}:`,
+            bulletPointsError
+          );
         }
 
         // Formatera projektet med alla detaljer
         return {
           ...project,
           technologies: technologies
-            ? technologies.map((tech) => ({
+            ? technologies.map((tech: any) => ({
                 name: tech.technologies?.name || 'Unknown Technology',
                 icon: tech.technologies?.icon,
                 color: tech.technologies?.color,
@@ -64,14 +67,14 @@ export async function fetchProjects(): Promise<Project[]> {
             ? {
                 start: project.start_date || '',
                 end: project.end_date || undefined,
-                milestones: milestones.map((milestone) => ({
+                milestones: milestones.map(milestone => ({
                   date: milestone.date,
                   title: milestone.title,
                   description: milestone.description,
                 })),
               }
             : undefined,
-          bulletPoints: bulletPoints ? bulletPoints.map((bp) => bp.content) : undefined,
+          bulletPoints: bulletPoints ? bulletPoints.map(bp => bp.content) : undefined,
         } as Project;
       })
     );
@@ -134,7 +137,7 @@ export async function fetchProjectById(id: string): Promise<Project | null> {
     return {
       ...project,
       technologies: technologies
-        ? technologies.map((tech) => ({
+        ? technologies.map((tech: any) => ({
             name: tech.technologies?.name || 'Unknown Technology',
             icon: tech.technologies?.icon,
             color: tech.technologies?.color,
@@ -144,14 +147,14 @@ export async function fetchProjectById(id: string): Promise<Project | null> {
         ? {
             start: project.start_date || '',
             end: project.end_date || undefined,
-            milestones: milestones.map((milestone) => ({
+            milestones: milestones.map(milestone => ({
               date: milestone.date,
               title: milestone.title,
               description: milestone.description,
             })),
           }
         : undefined,
-      bulletPoints: bulletPoints ? bulletPoints.map((bp) => bp.content) : undefined,
+      bulletPoints: bulletPoints ? bulletPoints.map(bp => bp.content) : undefined,
     } as Project;
   } catch (error) {
     console.error(`Unexpected error fetching project with id ${id}:`, error);
