@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { useCMS } from './CMSContext';
+import { CMSContent } from './content';
 
 interface EditorProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type ContentValue = string | number | boolean | object;
-
-const getNestedValue = (obj: any, path: string[]): string => {
-  let current: any = obj;
+const getNestedValue = (obj: CMSContent, path: string[]): string => {
+  let current: Record<string, unknown> = obj;
   for (const key of path) {
     if (current === undefined) return '';
-    current = current[key];
+    current = current[key] as Record<string, unknown>;
   }
   return typeof current === 'string' ? current : '';
 };
@@ -32,7 +31,7 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
     updateContent(selectedPath, editValue);
   };
 
-  const renderContentEditor = (obj: Record<string, any>, path: string[] = []) => {
+  const renderContentEditor = (obj: Record<string, unknown>, path: string[] = []) => {
     return Object.entries(obj).map(([key, value]) => {
       const currentPath = [...path, key];
       const pathString = currentPath.join('.');
@@ -41,7 +40,7 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
         return (
           <div key={pathString} className="ml-4">
             <h3 className="font-bold text-primary">{key}</h3>
-            {renderContentEditor(value, currentPath)}
+            {renderContentEditor(value as Record<string, unknown>, currentPath)}
           </div>
         );
       }
@@ -97,7 +96,7 @@ export const CMSEditor: React.FC<EditorProps> = ({ isOpen, onClose }) => {
                     </div>
                     <textarea
                       value={editValue}
-                      onChange={(e) => setEditValue(e.target.value)}
+                      onChange={e => setEditValue(e.target.value)}
                       className="p-2 w-full h-32 text-white rounded-lg border border-gray-700 bg-black/50"
                     />
                     <button

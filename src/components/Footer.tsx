@@ -35,11 +35,8 @@ export function Footer() {
   return (
     <footer className="relative z-10 bg-dark-lighter/30 backdrop-blur-sm border-t border-primary/10">
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <nav
-          className="flex flex-wrap justify-center mb-8"
-          aria-label="Footer"
-        >
-          {navigation.main.map((item) => (
+        <nav className="flex flex-wrap justify-center mb-8" aria-label="Footer">
+          {navigation.main.map(item => (
             <div key={item.name} className="px-5 py-2">
               <Link
                 to={item.href}
@@ -50,9 +47,9 @@ export function Footer() {
             </div>
           ))}
         </nav>
-        
+
         <div className="flex justify-center space-x-6 mb-8">
-          {navigation.social.map((item) => (
+          {navigation.social.map(item => (
             <a
               key={item.name}
               href={item.href}
@@ -65,19 +62,13 @@ export function Footer() {
             </a>
           ))}
         </div>
-        
+
         <div className="flex flex-col items-center">
-          <img
-            className="h-12 w-auto mb-4"
-            src="/logo.svg"
-            alt="DopaTec Logo"
-          />
+          <img className="h-12 w-auto mb-4" src="/logo.svg" alt="DopaTec Logo" />
           <p className="text-base text-gray-400">
             &copy; {currentYear} DopaTec. All rights reserved.
           </p>
-          <p className="mt-2 text-sm text-gray-500">
-            Malmö, Sweden
-          </p>
+          <p className="mt-2 text-sm text-gray-500">Malmö, Sweden</p>
         </div>
       </div>
     </footer>

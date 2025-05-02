@@ -12,7 +12,7 @@ interface State {
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
-    error: null
+    error: null,
   };
 
   public static getDerivedStateFromError(error: Error): State {
@@ -30,7 +30,8 @@ export class ErrorBoundary extends Component<Props, State> {
           <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
             <h2 className="text-2xl font-bold text-red-600 mb-4">Något gick fel</h2>
             <p className="text-gray-600 mb-4">
-              Ett oväntat fel har uppstått. Vänligen ladda om sidan eller kontakta support om problemet kvarstår.
+              Ett oväntat fel har uppstått. Vänligen ladda om sidan eller kontakta support om
+              problemet kvarstår.
             </p>
             <button
               onClick={() => window.location.reload()}
