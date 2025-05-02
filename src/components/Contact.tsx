@@ -1,150 +1,111 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 import { useFadeIn } from '../hooks/useFadeIn';
 
-const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd90WsNsKHNbxBCNe3speUkqxPhGenN4_DnE5Ik5hfy2TmAHg/viewform';
-
+// Create separate fade-in refs for different sections
 export function Contact() {
-  const navigate = useNavigate();
-
-  const handleInterestClick = () => {
-    navigate('/contact');
-  };
+  // Use hooks outside callbacks
+  const [infoRef, infoVisible] = useFadeIn();
+  const [formRef, formVisible] = useFadeIn();
+  const [socialRef, socialVisible] = useFadeIn();
 
   return (
-    <section className="overflow-hidden relative py-32 bg-black/95">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        {/* Tech grid background */}
-        <div className="absolute inset-0 opacity-5 tech-grid" />
-        
-        {/* Circuit lines */}
-        <div className="absolute inset-0">
-          {[...Array(3)].map((_, i) => (
-            <div 
-              key={i}
-              className="absolute h-[1px] w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-              style={{
-                top: `${30 + i * 30}%`,
-                animation: `slideRight ${10 + i}s linear infinite`,
-                opacity: 0.1
-              }}
-            />
-          ))}
-        </div>
+    <section className="py-20 bg-dark-lighter">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="grid gap-12 md:grid-cols-2">
+          {/* Contact Information */}
+          <div ref={infoRef} className={`fade-in-section ${infoVisible ? 'is-visible' : ''}`}>
+            <h2 className="mb-8 heading-lg">Get in Touch</h2>
+            <p className="mb-10 font-mono text-lg text-gray-300">
+              Have questions about our technology or interested in a partnership? We'd love to hear
+              from you.
+            </p>
 
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(12)].map((_, i) => {
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            const size = 2 + Math.random() * 2;
-            return (
-              <div
-                key={i}
-                className="absolute bg-primary/20 rounded-full blur-[1px]"
-                style={{
-                  left: `${left}%`,
-                  top: `${top}%`,
-                  width: `${size}px`,
-                  height: `${size}px`,
-                  animation: `floatParticle ${8 + Math.random() * 8}s ease-in-out infinite`
-                }}
-              />
-            );
-          })}
-        </div>
-
-        {/* Glowing corners */}
-        <div className="absolute top-0 left-0 w-32 h-32 to-transparent opacity-40 bg-gradient-radial from-primary/20" />
-        <div className="absolute right-0 bottom-0 w-32 h-32 to-transparent opacity-40 bg-gradient-radial from-primary/20" />
-      </div>
-
-      <div className="relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        {(() => {
-          const [headerRef, headerVisible] = useFadeIn();
-          return (
-            <div
-              ref={headerRef}
-              className={`fade-in-section ${headerVisible ? 'is-visible' : ''}`}
-            >
-              <h2 className="mb-8 text-left heading-xl" data-text="Contact Us.">
-                <span className="text-primary">Contact</span>
-                {" "}
-                <span className="text-white">Us</span>
-                <span className="text-primary">.</span>
-              </h2>
+            <div className="space-y-6">
+              <div className="flex gap-4 items-center">
+                <Mail className="w-6 h-6 text-primary" />
+                <a
+                  href="mailto:info@dopatec.com"
+                  className="font-mono text-lg text-gray-300 hover:text-primary"
+                >
+                  info@dopatec.com
+                </a>
+              </div>
+              <div className="flex gap-4 items-center">
+                <Phone className="w-6 h-6 text-primary" />
+                <span className="font-mono text-lg text-gray-300">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex gap-4 items-center">
+                <MapPin className="w-6 h-6 text-primary" />
+                <span className="font-mono text-lg text-gray-300">
+                  123 Neuroscience Way, San Francisco, CA 94107
+                </span>
+              </div>
             </div>
-          );
-        })()}
 
-        {/* Contact Form */}
-        {(() => {
-          const [formRef, formVisible] = useFadeIn();
-          return (
+            {/* Social Links */}
             <div
-              ref={formRef}
-              className={`fade-in-section delay-1 ${formVisible ? 'is-visible' : ''}`}
+              ref={socialRef}
+              className={`flex gap-6 mt-12 fade-in-section ${socialVisible ? 'is-visible' : ''}`}
             >
-              <form className="space-y-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <label htmlFor="first-name" className="block mb-2 font-mono text-sm text-gray-300">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="first-name"
-                      className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="last-name" className="block mb-2 font-mono text-sm text-gray-300">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="last-name"
-                      className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full transition-colors hover:bg-primary/10"
+              >
+                <Linkedin className="w-6 h-6 text-primary" />
+              </a>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div ref={formRef} className={`fade-in-section ${formVisible ? 'is-visible' : ''}`}>
+            <form className="p-8 rounded-xl bg-dark-light">
+              <h3 className="mb-6 text-2xl font-bold text-white">Send us a message</h3>
+              <div className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block mb-2 font-mono text-gray-300">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="px-4 py-3 w-full font-mono text-gray-300 rounded-lg border border-gray-700 transition-colors bg-black/50 focus:border-primary focus:ring-1 focus:ring-primary"
+                    placeholder="Your name"
+                  />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block mb-2 font-mono text-sm text-gray-300">
+                  <label htmlFor="email" className="block mb-2 font-mono text-gray-300">
                     Email
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
-                    required
+                    className="px-4 py-3 w-full font-mono text-gray-300 rounded-lg border border-gray-700 transition-colors bg-black/50 focus:border-primary focus:ring-1 focus:ring-primary"
+                    placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block mb-2 font-mono text-sm text-gray-300">
+                  <label htmlFor="message" className="block mb-2 font-mono text-gray-300">
                     Message
                   </label>
                   <textarea
                     id="message"
-                    rows={6}
-                    className="w-full px-4 py-3 font-mono text-white bg-transparent border rounded-lg border-primary/50 focus:border-primary focus:outline-none"
-                    required
-                  ></textarea>
+                    rows={4}
+                    className="px-4 py-3 w-full font-mono text-gray-300 rounded-lg border border-gray-700 transition-colors bg-black/50 focus:border-primary focus:ring-1 focus:ring-primary"
+                    placeholder="Your message"
+                  />
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-black btn bg-primary hover:bg-primary-light group"
+                  className="inline-flex gap-2 items-center px-8 py-3 font-mono text-black btn bg-primary hover:bg-primary-light"
                 >
-                  <span>Send Message</span>
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  Send Message
                 </button>
-              </form>
-            </div>
-          );
-        })()}
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );

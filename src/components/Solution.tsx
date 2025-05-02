@@ -1,153 +1,62 @@
-import React from 'react';
-import { ArrowRight, Smartphone, Brain, GraduationCap } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { projects } from '../data/projects';
+import { Smartphone, Brain, GraduationCap } from 'lucide-react';
 
 export function Solution() {
   const timelineSteps = [
     {
-      icon: <Smartphone className="w-12 h-12 text-primary" />,
-      title: "Transforming Digital Engagement",
-      description: "We convert destructive digital behaviors into empowering educational experiences by redirecting dopamine-driven engagement towards meaningful learning."
+      title: 'Research',
+      description: 'Groundbreaking research in dopamine monitoring technologies',
+      icon: <Brain className="w-6 h-6" />,
     },
     {
-      icon: <Brain className="w-12 h-12 text-primary" />,
-      title: "Neuroscience-Driven Technology",
-      description: "By integrating neuroscience principles, we develop software solutions, UX designs, and adaptive Learning Management Systems (LMS) that stimulate motivation and enhance retention."
+      title: 'Development',
+      description: 'Creating innovative biosensor solutions',
+      icon: <Smartphone className="w-6 h-6" />,
     },
     {
-      icon: <GraduationCap className="w-12 h-12 text-primary" />,
-      title: "Research-Backed Methodologies",
-      description: "Our approaches are grounded in extensive research and white papers, ensuring that our solutions are effective and scientifically validated."
-    }
+      title: 'Application',
+      description: 'Transforming healthcare and research with real-time dopamine monitoring',
+      icon: <GraduationCap className="w-6 h-6" />,
+    },
   ];
 
   return (
-    <section className="relative py-20 bg-black">
-      {/* Background effects */}
-      <div className="overflow-hidden absolute inset-0">
-        <div className="absolute inset-0 bg-black" />
-        {/* Neural network background */}
-        <div className="absolute inset-0 neural-connections">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className={`neuron-path neuron-path-${i + 1}`}>
-              <div className="signal-pulse" />
+    <section className="py-20 bg-dark-lighter">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="heading-lg">
+            <span className="text-primary">Our</span> Solution
+          </h2>
+          <p className="mt-4 font-mono text-lg text-gray-300">
+            Revolutionizing dopamine monitoring with cutting-edge technology
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {/* Solution Card 1 */}
+          <div className="p-6 transition-transform duration-300 rounded-xl bg-dark-light hover:scale-105">
+            <div className="mb-4 w-12 h-12 text-primary bg-primary/10 rounded-lg flex items-center justify-center">
+              {timelineSteps[0].icon}
             </div>
-          ))}
-        </div>
+            <h3 className="mb-3 text-xl font-bold text-white">{timelineSteps[0].title}</h3>
+            <p className="font-mono text-gray-300">{timelineSteps[0].description}</p>
+          </div>
 
-        {/* Dopamine particles */}
-        <div className="absolute inset-0 dopamine-particles">
-          {[...Array(30)].map((_, i) => {
-            const delay = Math.random() * 5;
-            const duration = 3 + Math.random() * 2;
-            const size = 2 + Math.random() * 4;
-            const initialX = Math.random() * 100;
-            const initialY = Math.random() * 100;
-            const opacity = 0.1 + Math.random() * 0.3;
-            const scale = 0.8 + Math.random() * 0.4;
-            
-            return (
-              <div
-                key={i}
-                className="absolute rounded-full bg-primary/20 blur-[1px] transition-all duration-1000"
-                style={{
-                  left: `${initialX}%`,
-                  top: `${initialY}%`,
-                  width: `${size}px`,
-                  height: `${size}px`,
-                  opacity: opacity,
-                  transform: `scale(${scale})`,
-                  animation: `
-                    float ${duration}s ease-in-out ${delay}s infinite,
-                    pulse ${2 + Math.random() * 2}s ease-in-out ${delay}s infinite,
-                    glow ${3 + Math.random() * 2}s ease-in-out ${delay}s infinite
-                  `
-                }}
-              >
-                {/* Inner glow effect */}
-                <div 
-                  className="absolute inset-0 rounded-full bg-primary/30"
-                  style={{
-                    filter: 'blur(2px)',
-                    animation: `pulse ${2 + Math.random() * 2}s ease-in-out ${delay}s infinite alternate`
-                  }}
-                />
-              </div>
-            );
-          })}
-        </div>
+          {/* Solution Card 2 */}
+          <div className="p-6 transition-transform duration-300 rounded-xl bg-dark-light hover:scale-105">
+            <div className="mb-4 w-12 h-12 text-primary bg-primary/10 rounded-lg flex items-center justify-center">
+              {timelineSteps[1].icon}
+            </div>
+            <h3 className="mb-3 text-xl font-bold text-white">{timelineSteps[1].title}</h3>
+            <p className="font-mono text-gray-300">{timelineSteps[1].description}</p>
+          </div>
 
-        {/* Energy waves */}
-        <div className="absolute inset-0">
-          {[...Array(3)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-full h-full rounded-full border border-primary/10"
-              style={{
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                animation: `ripple ${6 + i * 2}s linear infinite`
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Content */}
-
-      {/* Header */}
-      <div className="container relative z-10 px-4 mx-auto max-w-3xl sm:px-6 lg:px-8">
-        <h2 className="mb-4 text-left heading-xl" data-text="Our Solutions.">
-          <span className="text-primary">Our</span>
-          {" "}
-          <span className="text-white">Solutions</span>
-          <span className="text-primary">.</span>
-        </h2>
-        <p className="text-2xl text-white whitespace-nowrap md:text-3xl">
-          
-        </p>
-      </div>
-
-      {/* Timeline */}
-      <div className="container relative z-10 px-4 mx-auto mt-16 max-w-3xl sm:px-6 lg:px-8">
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-8 top-0 w-[2px] h-full bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
-          
-          {/* Timeline items */}
-          <div className="space-y-16">
-            {timelineSteps.map((step, index) => (
-              <div 
-                key={index}
-                className="relative pl-24 group"
-                style={{
-                  animation: `fadeInUp 0.6s ease-out forwards ${index * 0.3}s`
-                }}
-              >
-                {/* Icon container */}
-                <div className="absolute left-0 top-8 p-2 bg-black -translate-y-1/2">
-                  <div className="relative p-4 border transition-all duration-500 border-primary/50 group-hover:border-primary">
-                    {/* Glowing corners */}
-                    <div className="absolute top-0 left-0 w-2 h-2 transition-all duration-500 -translate-x-1 -translate-y-1 bg-primary/50 group-hover:bg-primary" />
-                    <div className="absolute top-0 right-0 w-2 h-2 transition-all duration-500 translate-x-1 -translate-y-1 bg-primary/50 group-hover:bg-primary" />
-                    <div className="absolute bottom-0 left-0 w-2 h-2 transition-all duration-500 -translate-x-1 translate-y-1 bg-primary/50 group-hover:bg-primary" />
-                    <div className="absolute right-0 bottom-0 w-2 h-2 transition-all duration-500 translate-x-1 translate-y-1 bg-primary/50 group-hover:bg-primary" />
-                    {step.icon}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="relative p-8 border backdrop-blur-sm transition-all duration-500 border-primary/10 group-hover:border-primary/30">
-                  {/* Glowing line */}
-                  <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-                  
-                  <h3 className="mb-4 text-2xl font-bold text-primary">{step.title}</h3>
-                  <p className="font-mono text-base text-gray-300">{step.description}</p>
-                </div>
-              </div>
-            ))}
+          {/* Solution Card 3 */}
+          <div className="p-6 transition-transform duration-300 rounded-xl bg-dark-light hover:scale-105">
+            <div className="mb-4 w-12 h-12 text-primary bg-primary/10 rounded-lg flex items-center justify-center">
+              {timelineSteps[2].icon}
+            </div>
+            <h3 className="mb-3 text-xl font-bold text-white">{timelineSteps[2].title}</h3>
+            <p className="font-mono text-gray-300">{timelineSteps[2].description}</p>
           </div>
         </div>
       </div>

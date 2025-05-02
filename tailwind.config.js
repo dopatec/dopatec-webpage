@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#8989DE', // Purple accent color
-          dark: '#7272D6',
-          light: '#A0A0E6',
+          DEFAULT: '#FFBE0B', // Gul accent färg (tidigare lila)
+          dark: '#E6AB0A', // Mörkare nyans
+          light: '#FFD14D', // Ljusare nyans
         },
         dark: {
           DEFAULT: '#141413', // Main dark background
@@ -15,19 +15,19 @@ export default {
           light: '#131C24', // Lighter dark shade
         },
         purple: {
-          DEFAULT: '#8989DE',
-          dark: '#7272D6',
-          light: '#A0A0E6',
-          10: 'rgba(137, 137, 222, 0.1)',
-          20: 'rgba(137, 137, 222, 0.2)',
-          30: 'rgba(137, 137, 222, 0.3)',
-          40: 'rgba(137, 137, 222, 0.4)',
-          50: 'rgba(137, 137, 222, 0.5)',
+          DEFAULT: '#FFBE0B', // Bytt från lila till gul
+          dark: '#E6AB0A', // Mörkare nyans
+          light: '#FFD14D', // Ljusare nyans
+          10: 'rgba(255, 190, 11, 0.1)',
+          20: 'rgba(255, 190, 11, 0.2)',
+          30: 'rgba(255, 190, 11, 0.3)',
+          40: 'rgba(255, 190, 11, 0.4)',
+          50: 'rgba(255, 190, 11, 0.5)',
         },
         secondary: {
-          DEFAULT: '#6366F1', // Indigo color
-          dark: '#4F46E5',
-          light: '#818CF8',
+          DEFAULT: '#FFBE0B', // Bytt från indigo till gul
+          dark: '#E6AB0A', // Mörkare nyans
+          light: '#FFD14D', // Ljusare nyans
         },
         accent: {
           DEFAULT: '#10B981', // Emerald color
@@ -54,4 +54,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

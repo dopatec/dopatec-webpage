@@ -1,119 +1,212 @@
-import React, { createContext, useCallback, useState } from 'react';
-import { 
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut as firebaseSignOut,
-  onAuthStateChanged
-} from 'firebase/auth';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, db } from '../lib/firebase';
-import type { User } from '../types';
+import React, { createContext, useEffect, useState } from 'react';
+import { User } from '@supabase/supabase-js';
+import { supabase } from '../lib/supabase';
 
-interface AuthContextType {
-  user: User | null;
-  loading: boolean;
-  error: string | null;
-  signUp: (email: string, password: string, userData: Partial<User>) => Promise<void>;
-  signIn: (email: string, password: string) => Promise<void>;
-  signOut: () => Promise<void>;
-  clearError: () => void;
+// Typer för användarroller
+export type UserRole = 'admin' | 'user';
+
+// Typ för användarprofil
+export interface UserProfile {
+  id: string;
+  email: string;
+  full_name: string | null;
+  role: UserRole;
+  avatar_url: string | null;
 }
 
+// Typ för autentiseringskontext
+interface AuthContextType {
+  user: User | null;
+  profile: UserProfile | null;
+  isAdmin: boolean;
+  isLoading: boolean;
+  signUp: (email: string, password: string, fullName: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
+  updateProfile: (data: Partial<UserProfile>) => Promise<void>;
+}
+
+// Skapa autentiseringskontext
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+// Provider-komponent för autentiseringskontext
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  React.useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      try {
-        if (firebaseUser) {
-          const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
-          if (userDoc.exists()) {
-            setUser({ ...userDoc.data() as User, uid: firebaseUser.uid });
-          }
-        } else {
-          setUser(null);
-        }
-      } catch (err) {
-        console.error('Auth state change error:', err);
-        setError('Unable to fetch user data. Please check your connection.');
-      } finally {
-        setLoading(false);
+  // Kontrollera om användaren är admin
+  const isAdmin = profile?.role === 'admin';
+
+  // Hämta användarprofil
+  const fetchProfile = async (userId: string) => {
+    try {
+      const { data, error } = await supabase.from('profiles').select('*').eq('id', userId).single();
+
+      if (error) {
+        console.error('Fel vid hämtning av profil:', error);
+        return null;
       }
+
+      return data as UserProfile;
+    } catch (error: unknown) {
+      console.error('Oväntat fel vid hämtning av profil:', error);
+      return null;
+    }
+  };
+
+  // Lyssna på autentiseringsändringar
+  useEffect(() => {
+    setIsLoading(true);
+
+    // Hämta aktuell session
+    const getInitialSession = async () => {
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        if (session?.user) {
+          setUser(session.user);
+          const userProfile = await fetchProfile(session.user.id);
+          setProfile(userProfile);
+        }
+      } catch (error: unknown) {
+        console.error('Fel vid hämtning av session:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getInitialSession();
+
+    // Prenumerera på autentiseringsändringar
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (session?.user) {
+        setUser(session.user);
+        const userProfile = await fetchProfile(session.user.id);
+        setProfile(userProfile);
+      } else {
+        setUser(null);
+        setProfile(null);
+      }
+      setIsLoading(false);
     });
 
-    return () => unsubscribe();
+    // Avsluta prenumeration när komponenten avmonteras
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
-  const signUp = useCallback(async (email: string, password: string, userData: Partial<User>) => {
+  // Registrera ny användare
+  const signUp = async (email: string, password: string, fullName: string) => {
     try {
-      setError(null);
-      setLoading(true);
-      const { user: firebaseUser } = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, 'users', firebaseUser.uid), {
-        ...userData,
-        uid: firebaseUser.uid,
+      const { data, error } = await supabase.auth.signUp({
         email,
-        courses: { applied: [], completed: [] }
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
+        },
       });
-    } catch (err: any) {
-      console.error('Sign up error:', err);
-      setError(err.message || 'Failed to create account');
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
 
-  const signIn = useCallback(async (email: string, password: string) => {
+      if (error) {
+        throw error;
+      }
+
+      // Användaren har registrerats, men måste bekräfta e-post
+      console.log('Användare registrerad, bekräfta e-post:', data);
+    } catch (error: unknown) {
+      console.error('Fel vid registrering:', error);
+      throw error;
+    }
+  };
+
+  // Logga in användare
+  const signIn = async (email: string, password: string) => {
     try {
-      setError(null);
-      setLoading(true);
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (err: any) {
-      console.error('Sign in error:', err);
-      setError(err.message || 'Failed to sign in');
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-  const signOut = useCallback(async () => {
+      if (error) {
+        throw error;
+      }
+
+      // Användaren har loggat in
+      console.log('Användare inloggad:', data);
+    } catch (error: unknown) {
+      console.error('Fel vid inloggning:', error);
+      throw error;
+    }
+  };
+
+  // Logga ut användare
+  const signOut = async () => {
     try {
-      setError(null);
-      setLoading(true);
-      await firebaseSignOut(auth);
-      setUser(null);
-    } catch (err: any) {
-      console.error('Sign out error:', err);
-      setError(err.message || 'Failed to sign out');
-      throw err;
-    } finally {
-      setLoading(false);
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        throw error;
+      }
+
+      // Användaren har loggat ut
+      console.log('Användare utloggad');
+    } catch (error: unknown) {
+      console.error('Fel vid utloggning:', error);
+      throw error;
     }
-  }, []);
+  };
 
-  const clearError = useCallback(() => {
-    setError(null);
-  }, []);
+  // Uppdatera användarprofil
+  const updateProfile = async (data: Partial<UserProfile>) => {
+    if (!user) {
+      throw new Error('Ingen användare inloggad');
+    }
 
-  const value = {
-    user,
-    loading,
-    error,
-    signUp,
-    signIn,
-    signOut,
-    clearError
+    try {
+      const { error } = await supabase.from('profiles').update(data).eq('id', user.id);
+
+      if (error) {
+        throw error;
+      }
+
+      // Uppdatera lokal profil
+      setProfile(prev => (prev ? { ...prev, ...data } : null));
+    } catch (error: unknown) {
+      console.error('Fel vid uppdatering av profil:', error);
+      throw error;
+    }
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider
+      value={{
+        user,
+        profile,
+        isAdmin,
+        isLoading,
+        signUp,
+        signIn,
+        signOut,
+        updateProfile,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
-}
+};
+
+// Hook för att använda autentiseringskontext
+export const useAuth = () => {
+  const context = React.useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth måste användas inom en AuthProvider');
+  }
+  return context;
+};

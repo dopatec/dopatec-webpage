@@ -1,62 +1,38 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useFadeIn } from '../hooks/useFadeIn';
 
-const INTEREST_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSd90WsNsKHNbxBCNe3speUkqxPhGenN4_DnE5Ik5hfy2TmAHg/viewform';
+// Constant for interest form URL (if needed later)
+const INTEREST_FORM_URL = 'https://forms.example.com/interest';
 
 export function Hero() {
-  const navigate = useNavigate();
-
-  const handleInterestClick = () => {
-    navigate('/about');
-  };
+  // Use hooks outside callbacks
+  const [heroRef, heroVisible] = useFadeIn();
+  const [descriptionRef, descriptionVisible] = useFadeIn();
+  const [ctaRef, ctaVisible] = useFadeIn();
 
   return (
-    <section className="flex relative justify-start items-center min-h-screen hero-section">
-      <div className="absolute inset-0 z-0">
-        {/* Neural network background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.95)_100%)]" />
-        
-        {/* Digital circuit patterns */}
-        <div className="absolute inset-0 opacity-10 circuit-pattern" />
-        
-        {/* Neural connections */}
-        <div className="absolute inset-0 neural-connections">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className={`neuron-path neuron-path-${i + 1}`}>
-              <div className="signal-pulse" />
-            </div>
-          ))}
+    <section className="overflow-hidden relative pt-28 pb-20 min-h-screen bg-dark">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-5 tech-grid" />
+
+        {/* Neural network animation */}
+        <div className="neuron-container">
+          <div className="neuron neuron-1">
+            <div className="neuron-pulse" />
+          </div>
+          <div className="neuron neuron-2">
+            <div className="neuron-pulse" />
+          </div>
+          <div className="neuron neuron-3">
+            <div className="neuron-pulse" />
+          </div>
+          <div className="neuron-connection connection-1" />
+          <div className="neuron-connection connection-2" />
         </div>
 
-        {/* Dopamine particles */}
-        <div className="absolute inset-0 dopamine-particles">
-          {[...Array(20)].map((_, i) => {
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            const delay = Math.random() * 4;
-            const duration = 3 + Math.random() * 3;
-            
-            return (
-              <div
-                key={i}
-                className={`particle particle-${i + 1}`}
-                style={{
-                  left: `${left}%`,
-                  top: `${top}%`,
-                  animationDelay: `${delay}s`,
-                  animationDuration: `${duration}s`
-                }}
-              />
-            );
-          })}
-        </div>
-
-        {/* Tech grid overlay */}
-        <div className="absolute inset-0 opacity-20 tech-grid" />
-        
-        {/* Glowing synapses */}
+        {/* Synapses */}
         <div className="parallax synapse synapse-1" data-speed="-0.2">
           <div className="synapse-glow" />
         </div>
@@ -69,49 +45,47 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        {(() => {
-          const [ref, isVisible] = useFadeIn();
-          return (
-            <div 
-              ref={ref}
-              className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
-            >
-              <div className="flex flex-col gap-4">
-                <h1 className="heading-xl parallax glitch-text" data-speed="0.1" data-text="DopaTec.">
-                  <span className="text-primary">Dopa</span>
-                  <span className="text-white">Tec</span>
-                  <span className="text-primary">.</span>
-                </h1>
-                <h1 className="heading-xl parallax" data-speed="0.15" data-text="Dopamine Technologies">
-                  <span className="text-primary">Dopamine</span>
-                  {" "}
-                  <span className="text-white">Technologies</span>
-                </h1>
-              </div>
-              <h2 className="mb-8 max-w-3xl text-2xl text-white md:text-3xl parallax" data-speed="0.2">
-                We are a pioneering tech company transforming digital engagement into 
-                empowered learning through neuroscience-driven solutions.
-              </h2>
-              <p className="mb-12 max-w-3xl font-mono text-xl text-gray-200">
-              </p>
-              <div className="text-left">
-                <button
-                  onClick={handleInterestClick}
-                  className="font-mono text-black btn bg-primary hover:bg-primary-light"
-                >
-                  Get to know us <ArrowRight className="ml-2" />
-                </button>
-              </div>
-            </div>
-          );
-        })()}
-
-        {/* Scroll Indicator */}
-        <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 scroll-indicator-container">
-          <div className="scroll-indicator">
-            <div className="scroll-pulse"></div>
-            <div className="scroll-arrow"></div>
+        {/* Hero section with fade-in effect */}
+        <div ref={heroRef} className={`fade-in-section ${heroVisible ? 'is-visible' : ''}`}>
+          <div className="flex flex-col gap-4">
+            <h1 className="heading-xl parallax glitch-text" data-speed="0.1" data-text="DopaTec.">
+              <span className="text-primary">Dopa</span>
+              <span className="text-white">Tec</span>
+              <span className="text-primary">.</span>
+            </h1>
+            <h1 className="heading-xl parallax" data-speed="0.15" data-text="Dopamine Technologies">
+              <span className="text-white">Dopamine Technologies</span>
+            </h1>
           </div>
+        </div>
+
+        {/* Description with fade-in effect */}
+        <div
+          ref={descriptionRef}
+          className={`mt-8 max-w-3xl fade-in-section ${descriptionVisible ? 'is-visible' : ''}`}
+        >
+          <p className="font-mono text-xl leading-relaxed text-gray-300">
+            We revolutionize digital interaction by applying neuroscience principles to technology.
+            Our solutions engage users' brains on deeper levels.
+          </p>
+        </div>
+
+        {/* CTA buttons with fade-in effect */}
+        <div
+          ref={ctaRef}
+          className={`flex flex-wrap gap-6 mt-12 fade-in-section ${ctaVisible ? 'is-visible' : ''}`}
+        >
+          <button className="inline-flex overflow-hidden relative gap-2 items-center px-8 py-3 font-mono text-black btn bg-primary hover:bg-primary-light group">
+            <span className="relative z-10 transition-transform duration-500 group-hover:translate-x-1">
+              Explore our solutions
+            </span>
+            <ArrowRight className="relative z-10 w-5 h-5 transition-all duration-500 group-hover:translate-x-1" />
+            <div className="absolute inset-0 transition-transform duration-500 transform origin-left scale-x-0 bg-white/10 group-hover:scale-x-100" />
+          </button>
+
+          <button className="inline-flex gap-2 items-center px-8 py-3 font-mono text-white border transition-colors border-white/20 hover:border-primary hover:text-primary">
+            Learn more about us
+          </button>
         </div>
       </div>
     </section>

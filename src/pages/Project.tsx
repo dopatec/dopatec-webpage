@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 
@@ -25,14 +24,16 @@ export function Project() {
         <div className="p-8 rounded-lg shadow-xl bg-dark-lighter">
           <div className="mb-8">
             <h1 className="flex items-center mb-2 text-4xl font-bold text-primary">
-              {project.emoji} {project.name}
+              {project.emoji} {project.title}
             </h1>
           </div>
 
           <div className="mb-8 max-w-none prose prose-invert">
             <div className="space-y-4 text-gray-200">
-              {project.fullDescription.split('\n').map((paragraph, index) => (
-                <p key={index} className="font-mono">{paragraph}</p>
+              {project.fullDescription?.split('\n').map((paragraph, index) => (
+                <p key={index} className="font-mono">
+                  {paragraph}
+                </p>
               ))}
             </div>
           </div>
@@ -40,7 +41,7 @@ export function Project() {
           <div className="mt-8">
             <h2 className="mb-4 text-2xl font-bold text-primary">Huvudfunktioner</h2>
             <ul className="space-y-2">
-              {project.bulletPoints.map((point, index) => (
+              {project.bulletPoints?.map((point, index) => (
                 <li key={index} className="flex items-start">
                   <span className="mr-2 text-secondary">•</span>
                   <span className="font-mono text-gray-200">{point}</span>

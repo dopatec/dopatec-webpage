@@ -6,11 +6,13 @@ import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
 import { ProjectDetails } from './pages/ProjectDetails';
 import { About } from './pages/About';
-import { Mission } from './pages/Mission';
-import ContactPage from './pages/Contact';
+import { ContactPage } from './pages/Contact';
+import { Auth } from './pages/Auth';
+import { Admin } from './pages/Admin';
 import ScrollToTop from './components/ScrollToTop';
 import { CMSProvider } from './cms/CMSContext';
 import { CMSEditor } from './cms/CMSEditor';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [isCMSOpen, setIsCMSOpen] = useState(false);
@@ -28,28 +30,31 @@ function App() {
   }, []);
 
   return (
-    <CMSProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-dark">
-          <Navbar />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/:projectId" element={<ProjectDetails />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/mission" element={<Mission />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-        {process.env.NODE_ENV === 'development' && (
-          <CMSEditor isOpen={isCMSOpen} onClose={() => setIsCMSOpen(false)} />
-        )}
-      </Router>
-    </CMSProvider>
+    <AuthProvider>
+      <CMSProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="flex flex-col min-h-screen bg-dark">
+            <Navbar />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:projectId" element={<ProjectDetails />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/admin" element={<Admin />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+          {process.env.NODE_ENV === 'development' && (
+            <CMSEditor isOpen={isCMSOpen} onClose={() => setIsCMSOpen(false)} />
+          )}
+        </Router>
+      </CMSProvider>
+    </AuthProvider>
   );
 }
 

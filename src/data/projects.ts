@@ -44,28 +44,28 @@ export const technologies = {
   react: {
     name: 'React',
     icon: 'react-icon.svg',
-    color: '#61DAFB'
+    color: '#61DAFB',
   },
   typescript: {
     name: 'TypeScript',
     icon: 'typescript-icon.svg',
-    color: '#3178C6'
+    color: '#3178C6',
   },
   python: {
     name: 'Python',
     icon: 'python-icon.svg',
-    color: '#3776AB'
+    color: '#3776AB',
   },
   neuroscience: {
     name: 'Neuroscience',
     icon: 'brain-icon.svg',
-    color: '#FF6B6B'
+    color: '#FF6B6B',
   },
   ml: {
     name: 'Machine Learning',
     icon: 'ml-icon.svg',
-    color: '#00A67D'
-  }
+    color: '#00A67D',
+  },
 } as const;
 
 // Project data
@@ -73,8 +73,10 @@ export const projects: Project[] = [
   {
     id: 'dentaforce',
     title: 'Dentaforce',
-    summary: 'Revolutionizing dental education and practice management through neuroscience-backed technology.',
-    description: 'Dentaforce is our flagship project aimed at revolutionizing dental education and practice management through neuroscience-backed technology.',
+    summary:
+      'Revolutionizing dental education and practice management through neuroscience-backed technology.',
+    description:
+      'Dentaforce is our flagship project aimed at revolutionizing dental education and practice management through neuroscience-backed technology.',
     fullDescription: `Dentaforce combines cutting-edge neuroscience research with modern educational technology to create an immersive learning experience for dental professionals. The platform adapts to individual learning patterns and provides real-time feedback based on cognitive load and engagement levels.
 
     Our system uses advanced algorithms to track learning progress and automatically adjusts the difficulty and pace of content delivery, ensuring optimal knowledge retention and skill development.`,
@@ -83,14 +85,14 @@ export const projects: Project[] = [
       technologies.react,
       technologies.typescript,
       technologies.neuroscience,
-      technologies.ml
+      technologies.ml,
     ],
     status: 'ongoing',
     bulletPoints: [
       'Adaptive learning algorithms',
       'Real-time cognitive load monitoring',
       'Personalized learning paths',
-      'Interactive 3D visualizations'
+      'Interactive 3D visualizations',
     ],
     emoji: '🎓',
     timeline: {
@@ -99,39 +101,37 @@ export const projects: Project[] = [
         {
           date: '2023-12',
           title: 'Beta Launch',
-          description: 'Initial release to select dental schools'
+          description: 'Initial release to select dental schools',
         },
         {
           date: '2024-03',
           title: 'AI Integration',
-          description: 'Implementation of advanced learning algorithms'
-        }
-      ]
-    }
+          description: 'Implementation of advanced learning algorithms',
+        },
+      ],
+    },
   },
   {
     id: 'neurostep',
     title: 'Neurostep',
-    summary: 'An innovative educational platform making neuropsychiatric learning accessible to everyone.',
-    description: 'Neurostep is an innovative educational platform that makes learning about neuropsychiatric conditions engaging and accessible for everyone.',
+    summary:
+      'An innovative educational platform making neuropsychiatric learning accessible to everyone.',
+    description:
+      'Neurostep is an innovative educational platform that makes learning about neuropsychiatric conditions engaging and accessible for everyone.',
     fullDescription: `Neurostep är en innovativ utbildningsplattform som gör lärandet kring neuropsykiatriska funktionsnedsättningar (NPF) engagerande och tillgängligt för alla. Inspirerad av uttryck som "step up your game", "step up your learning" och Neil Armstrongs ikoniska citat "That's one small step for man, one giant leap for mankind", är Neurostep designad för att hjälpa dig att ta nästa steg i din kunskapsresa.
 
     Plattformen erbjuder skräddarsydda kurser för olika målgrupper, inklusive anhöriga, vårdpersonal, arbetsgivare och skolpersonal, med målet att förbättra förståelsen och stödet för individer med NPF.`,
     image: '/projects/neurostep.jpg',
-    technologies: [
-      technologies.react,
-      technologies.typescript,
-      technologies.neuroscience
-    ],
+    technologies: [technologies.react, technologies.typescript, technologies.neuroscience],
     status: 'completed',
     bulletPoints: [
       'Skräddarsydda kurser',
       'Expertkunskap',
       'Interaktivt lärande',
-      'Kontinuerlig uppdatering'
+      'Kontinuerlig uppdatering',
     ],
-    emoji: '🧠'
-  }
+    emoji: '🧠',
+  },
 ] as const;
 
 // Helper functions
@@ -144,7 +144,7 @@ export function getProjectsByStatus(status: ProjectStatus): Project[] {
 }
 
 export function getProjectsByTechnology(techName: string): Project[] {
-  return projects.filter(project => 
+  return projects.filter(project =>
     project.technologies.some(tech => tech.name.toLowerCase() === techName.toLowerCase())
   );
 }
