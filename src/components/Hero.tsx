@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useFadeIn } from '../hooks/useFadeIn';
 
-// Constant for interest form URL (if needed later)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const INTEREST_FORM_URL = 'https://forms.example.com/interest';
 
 export function Hero() {

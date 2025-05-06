@@ -57,11 +57,16 @@ export async function fetchProjects(): Promise<Project[]> {
         return {
           ...project,
           technologies: technologies
-            ? technologies.map((tech: any) => ({
-                name: tech.technologies?.name || 'Unknown Technology',
-                icon: tech.technologies?.icon,
-                color: tech.technologies?.color,
-              }))
+            ? technologies.map(
+                (tech: { technologies?: { name?: string; icon?: string; color?: string }[] }) => ({
+                  name:
+                    tech.technologies && tech.technologies[0]?.name
+                      ? tech.technologies[0].name
+                      : 'Unknown Technology',
+                  icon: tech.technologies && tech.technologies[0]?.icon,
+                  color: tech.technologies && tech.technologies[0]?.color,
+                })
+              )
             : [],
           timeline: milestones?.length
             ? {
@@ -137,11 +142,16 @@ export async function fetchProjectById(id: string): Promise<Project | null> {
     return {
       ...project,
       technologies: technologies
-        ? technologies.map((tech: any) => ({
-            name: tech.technologies?.name || 'Unknown Technology',
-            icon: tech.technologies?.icon,
-            color: tech.technologies?.color,
-          }))
+        ? technologies.map(
+            (tech: { technologies?: { name?: string; icon?: string; color?: string }[] }) => ({
+              name:
+                tech.technologies && tech.technologies[0]?.name
+                  ? tech.technologies[0].name
+                  : 'Unknown Technology',
+              icon: tech.technologies && tech.technologies[0]?.icon,
+              color: tech.technologies && tech.technologies[0]?.color,
+            })
+          )
         : [],
       timeline: milestones?.length
         ? {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Linkedin, Github } from 'lucide-react';
+import Logo from '../assets/Dopatec-Logo-Navbar.png';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -64,7 +65,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center">
-          <img className="h-12 w-auto mb-4" src="/logo.svg" alt="DopaTec Logo" />
+          <img className="h-12 w-auto mb-4" src={Logo} alt="DopaTec Logo" />
           <p className="text-base text-gray-400">
             &copy; {currentYear} DopaTec. All rights reserved.
           </p>

@@ -1,13 +1,28 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { projects } from '../data/projects';
+import { fetchProjects } from '../lib/projectService';
+import type { Project } from '../data/projects';
 
 export function Projects() {
-  // Get featured projects - both ongoing and completed projects
-  const featuredProjects = projects
-    .filter(p => p.status === 'ongoing' || p.status === 'completed')
-    .slice(0, 3);
+  const [projects, setProjects] = React.useState<Project[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    fetchProjects()
+      .then(data => {
+        setProjects(
+          data
+            .filter((p: Project) => p.status === 'ongoing' || p.status === 'completed')
+            .slice(0, 3)
+        );
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-12 text-gray-400">Laddar projekt...</div>;
+  }
 
   return (
     <section className="relative py-20">
@@ -42,7 +57,7 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProjects.map(project => (
+          {projects.map(project => (
             <div
               key={project.id}
               className="group relative overflow-hidden rounded-xl backdrop-blur-sm border border-primary/10 transition-all duration-300 hover:border-primary/30"
