@@ -4,6 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  VITE_SUPABASE_URL = "https://zbrdelrfjugspeqpcfjg.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpicmRlbHJmanVnc3BlcXBjZmpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYyMTU3OTEsImV4cCI6MjA2MTc5MTc5MX0.FJjRPQ7KSHFj9kQvd5ayS6ukel4ioH2WJCAhtISUZ4c"
 
 [[redirects]]
   from = "/*"
