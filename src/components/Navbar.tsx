@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Twitter, Youtube, LogOut, User } from 'lucide-react';
+import { Instagram, Twitter, Youtube, LogOut } from 'lucide-react';
 import Logo from '../assets/Dopatec-Logo-Navbar.png';
 import { useAuth } from '../hooks/useAuth';
 
@@ -61,15 +61,7 @@ export function Navbar() {
                   </button>
                 </div>
               </div>
-            ) : (
-              <Link
-                to="/auth"
-                className="flex items-center px-3 py-1 text-sm rounded-md text-white bg-primary/20 hover:bg-primary/30"
-              >
-                <User className="w-4 h-4 mr-1" />
-                Sign In
-              </Link>
-            )}
+            ) : null}
 
             {/* Social Media Links */}
             <div className="flex items-center space-x-4">
@@ -177,15 +169,7 @@ export function Navbar() {
                   Sign Out
                 </button>
               </>
-            ) : (
-              <Link
-                to="/auth"
-                className="block px-3 py-2 nav-link"
-                onClick={() => setIsOpen(false)}
-              >
-                Sign In
-              </Link>
-            )}
+            ) : null}
           </div>
         </div>
       )}
