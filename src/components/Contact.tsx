@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Linkedin } from 'lucide-react';
 import { useFadeIn } from '../hooks/useFadeIn';
 
 // Create separate fade-in refs for different sections
@@ -27,18 +27,13 @@ export function Contact() {
                   href="mailto:info@dopatec.com"
                   className="font-mono text-lg text-gray-300 hover:text-primary"
                 >
-                  info@dopatec.com
+                  carl@dopatec.com
                 </a>
               </div>
-              <div className="flex gap-4 items-center">
-                <Phone className="w-6 h-6 text-primary" />
-                <span className="font-mono text-lg text-gray-300">+1 (555) 123-4567</span>
-              </div>
+
               <div className="flex gap-4 items-center">
                 <MapPin className="w-6 h-6 text-primary" />
-                <span className="font-mono text-lg text-gray-300">
-                  123 Neuroscience Way, San Francisco, CA 94107
-                </span>
+                <span className="font-mono text-lg text-gray-300">Röstånga, Sweden</span>
               </div>
             </div>
 
