@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FFBE0B', // Gul accent färg (tidigare lila)
+          DEFAULT: '#FCEA00', // Gul accent färg (uppdaterad)
           dark: '#E6AB0A', // Mörkare nyans
-          light: '#FFD14D', // Ljusare nyans
+          light: '#FFF066', // Ljusare nyans (uppdaterad)
         },
         dark: {
           DEFAULT: '#141413', // Main dark background

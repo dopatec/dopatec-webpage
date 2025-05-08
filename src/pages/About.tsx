@@ -1,29 +1,4 @@
-import { Mail, Linkedin } from 'lucide-react';
-import carl from '../assets/team/Calle.png';
-import robertPlaceholder from '../assets/team/Robert.png';
-
 export function About() {
-  const team = [
-    {
-      name: 'Carl Pohl',
-      role: 'Founder and CTO',
-      image: carl,
-      social: [
-        { url: '#', icon: <Linkedin className="w-6 h-6" /> },
-        { url: `mailto:carl.pohl@impactneuro.org`, icon: <Mail className="w-6 h-6" /> },
-      ],
-    },
-    {
-      name: 'Robert Hansson',
-      role: 'Co-founder',
-      image: robertPlaceholder,
-      social: [
-        { url: '#', icon: <Linkedin className="w-6 h-6" /> },
-        { url: `mailto:robert.hansson@impactneuro.org`, icon: <Mail className="w-6 h-6" /> },
-      ],
-    },
-  ];
-
   return (
     <div className="relative min-h-screen bg-dark">
       {/* Hero-style background */}
@@ -77,44 +52,6 @@ export function About() {
             Dopatec is headquartered in Malmö, Sweden, and is dedicated to transforming the future
             of learning by merging neuroscience with technology.
           </p>
-        </div>
-
-        <div className="py-16 text-center">
-          <h2 className="mb-12 text-center heading-xl">
-            <span className="text-primary">Our</span> <span className="text-white">Team</span>
-          </h2>
-          <div className="grid grid-cols-1 gap-12 mx-auto max-w-4xl md:grid-cols-2 lg:gap-16">
-            {team.map((member, index) => (
-              <div key={index} className="overflow-hidden relative p-6 rounded-xl backdrop-blur-sm">
-                <div className="mb-8">
-                  <div className="overflow-hidden mx-auto w-64 h-64 rounded-full">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                </div>
-                <div className="relative">
-                  <h3 className="mb-2 text-2xl font-bold text-primary">{member.name}</h3>
-                  <p className="mb-4 font-mono text-gray-300">{member.role}</p>
-                  <div className="flex gap-4 justify-center">
-                    {member.social.map((link, i) => (
-                      <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 text-gray-400 rounded-full transition-colors duration-300 hover:text-primary hover:bg-primary/10"
-                      >
-                        {link.icon}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>
