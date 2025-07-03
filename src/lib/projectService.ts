@@ -1,6 +1,18 @@
 import { supabase } from './supabase';
 import { Project } from '../data/projects';
 
+// Definierar en typ för teknologidata
+interface Technology {
+  name?: string;
+  icon?: string;
+  color?: string;
+}
+
+// Definierar en typ för teknologisvar från API
+interface TechData {
+  technologies: Technology;
+}
+
 // Hämta alla projekt från databasen
 export async function fetchProjects(): Promise<Project[]> {
   try {
@@ -57,7 +69,7 @@ export async function fetchProjects(): Promise<Project[]> {
         return {
           ...project,
           technologies: technologies
-            ? technologies.map((tech: any) => ({
+            ? technologies.map((tech: TechData) => ({
                 name: tech.technologies?.name || 'Unknown Technology',
                 icon: tech.technologies?.icon,
                 color: tech.technologies?.color,
@@ -137,7 +149,7 @@ export async function fetchProjectById(id: string): Promise<Project | null> {
     return {
       ...project,
       technologies: technologies
-        ? technologies.map((tech: any) => ({
+        ? technologies.map((tech: TechData) => ({
             name: tech.technologies?.name || 'Unknown Technology',
             icon: tech.technologies?.icon,
             color: tech.technologies?.color,
